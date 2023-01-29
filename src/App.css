@@ -1,38 +1,560 @@
+/* Boiler Plate */
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-image: linear-gradient(rgba(234, 223, 223, 0.308),
+      rgba(52, 101, 66, 0.276)), url("../src/img/busy-market.jpeg");
+  
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .2);
+}
+
 .App {
+
   text-align: center;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.buttons{
+  margin-bottom: 1%;
+  border: orange solid 2px;
+  border-radius: 5px;
+  background-color: black;
+  color: orange;
+  padding: 3px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 100px; 
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* Height of the footer */
+  background-color: rgb(231, 145, 32);
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight:bold;
+}
+
+.mainTitleContainer {
+ margin: 1%;
+  padding: 2%;
+  background-image: url("../src/img/wood_board.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  margin-bottom: 50px;
+  border-radius: 10px;
+
+}
+
+.mainTitle {
+  padding: 2%;
+ background-color: tan;
+ border-radius: 10px;
+
+}
+
+
+/*---------------------LOGIN AND REGISTER STYLES -----------------------------*/
+.card-container.card {
+  max-width: 350px !important;
+  padding: 40px 40px;
+}
+
+.card {
+  background-color: rgba(222, 156, 69, 0.789);
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+/*---------------------ITEM ORGANIZATION STYLES -----------------------------*/
+.itemsContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-inline: 2rem;
+  grid-auto-rows: minmax(100px, auto);
+  margin-bottom: 5%;
+  margin-top: 1%;
+}
+
+.items,
+.container {
+  border: 2px solid black;
+  padding: 5%;
+  display: grid;
+  grid-template-rows: repeat(1);
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(222, 156, 69, 0.93);
+}
+
+.items {
+  position: relative;
+  border-radius: 10px;
+}
+
+
+.itemNames {
+  display: flex;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.title {
+  color: rgb(46, 38, 27);
+  border: solid black;
+  padding: 2%;
+  background: tan;
+  font-size: 5vh;
+  text-decoration: underline;
+}
+
+.text {
+  font-size: 2rem;
+  border: 2px solid black;
+  background-color: rgba(222, 156, 69, 0.789);
+}
+
+.itemType {
+  align-items: center;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+
+.itemDesc {
+  padding-bottom: 5%;
+}
+
+.icon {
+  display: flex;
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  background: red;
+  border: 2px solid black;
+  border-radius: 5px;
+    
+}
+
+.itemCost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
+  bottom: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.cost {
+  background: rgb(102, 34, 34);
+  color: rgb(214, 218, 143);
+  border-radius: 20px;
+  max-width: 5rem;
+  height: 4rem;
+  font-size: 1.25rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* HOME PAGE__________________________________________________________*/
+.homeContainer {
+  display: flex;
+ 
+}
+
+.contentContainer {
+  padding-bottom: 60px;
+  background: #3d5019;
+  color: rgb(0, 0, 0);
+  margin-top: 1%;
+  padding: 3%;
+  font-size: 32px;
+}
+
+.adContainer {
+  display: flex;
+  background-color: rgb(223, 214, 203);
+  padding: 1%;
+  align-items: center;
+  border: #23242a solid 5px;
+  margin-top: 2%;
+  position: relative;
+}
+
+.adLink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;     
+}
+
+.adImage {
+  border: black solid 2px;
+  object-fit: cover;
+}
+
+.adText {
+  width: 100%;
+  left: 0;
+  top: 15%;
+}
+
+
+.homeHeader {
+  background: #d3872a;
+  color: rgb(0, 0, 0);
+  margin-top: 1%;
+  padding: 3%;
+  font-size: 32px;
+  border-radius: 30px;
+}
+
+.homeIntro {
+  font-size: 70%;
+  background: #d3872a;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  left: 0px;
+  border-radius: 15px;
+  padding: 2%;
+}
+
+
+
+/* Image Slider-----------------------------------------------------------------*/
+.imgSliderContainer {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background: #d3872a;
+}
+
+.sliderText {
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
+    background: #6c8243;
+    border-radius: 30px;
+}
+
+.sliderTextContainer {
+  display: flex;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+/* Drop down menu_______________________________________________ */
+
+.dropdown-container {
+  text-align: left;
+  border: 1px solid #ccc;
+  position: relative;
+  border: 2px solid black;
+  background-color: tan;
+
+}
+
+.dropdown-input {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.dropdown-menu-main {
+  position: absolute;
+  transform: translateY(4px);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: auto;
+  max-height: 150px;
+  background-color: rgb(255, 170, 0);
+  z-index: 99;
+}
+
+.dropdown-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: tan;
+}
+
+.dropdown-item.selected {
+  background-color: #000000;
+  color: #fff;
+}
+
+.dropdown-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.dropdown-tag-item {
+  background-color: tan;
+  padding: 2px 4px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-tag-close {
+  display: flex;
+  align-items: center;
+}
+
+.search-box {
+  padding: 5px;
+  background-color: rgb(255, 170, 0);
+}
+
+.search-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgb(220, 201, 177);
+}
+
+
+
+
+/* COST DROPDOWN MENU___________________________________________*/
+
+.cost-dropdown {
+  max-width: 4rem;
+  border-radius: 40px;
+  position: relative;
+  align-items: center;
+}
+
+.cost-dropdown * {
+  box-sizing: border-box;
+}
+
+.cost-select {
+  background: #2a2f3b;
+  color: #ffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px #2a2f3b solid;
+  border-radius: .5em;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cost-selected {
+  display: block;
+  width: fit-content;
+
+  
+}
+
+/*
+Clicked styles
+added later in JS
+*/
+
+.cost-select-clicked {
+  border: 2px #26489a solid;
+  box-shadow: 0 0 0.8em #26489a;
+}
+
+.cost-select:hover {
+  background: #323741;
+}
+
+.cost-caret {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #ffff;
+  transition: 0.3s;
+}
+
+.cost-caret-rotate {
+  transform: rotate(180deg);
+}
+
+.cost-menu {
+  list-style: none;
+  padding: 0.2em 0.5em;
+  background: #323741;
+  border: 1px #363a43 solid;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  color: #9fa5b5;
+  position: absolute;
+  top: 3em;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+  z-index: 1;
+}
+
+.cost-menu li {
+  padding: 0.7em;
+  margin: 0.3em 0;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.cost-menu li:hover {
+  background: #2a2d35;
+}
+
+.cost-active {
+  background: #23242a;
+}
+
+.cost-menu-open {
+  display: block;
+  opacity: 1;
+}
+
+
+/* QUANTITY ------------------------------- */
+
+.itemQuantity {
+  display: grid;
+  background-color: #d3872a;
+  border: black solid 2px;
+  border-radius: 5px;
+  align-items: center;
+  padding: auto;
+  margin: 10px;;
+  position: relative;
+}
+
+#quantity {
+  margin: 2%;
+}
+
+.quantity {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+
+/*PUBLISHED ITEMS ------------------------------------------------ */
+
+.itemsContainer-published {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-inline: 2rem;
+    grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 5%;
+    margin-top: 1%;
+   
   }
-  to {
-    transform: rotate(360deg);
-  }
+
+.item-container-published {
+    background-image: url(../src/img/wooden-board-h.jpeg);
+    border: 2px solid black;
+    padding: 5%;
+    display: grid;
+    grid-template-rows: repeat(1);
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.item-published {
+  background-image: url(../src/img/shutterstock_79257886.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px; 
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.itemNames-published {
+  display: flex;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.itemCost-published {
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+
+.cost-published {
+font-size: 2rem;
+  
+}
+
+.cointType-published {
+ font-size: 1rem;
+}
+
+.itemQuantity-published {
+  display: grid;
+  align-items: center;
+  padding: 5%;
+  margin: 5%;
+  font-size: 2rem;
 }
