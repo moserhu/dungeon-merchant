@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dbConfig = require("./config/db.config");
 require("dotenv").config();
+const path = require("path");
 
 const app = express();
 
@@ -52,7 +53,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client", "build")));
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  })
+  });
 };
 
 app.listen(PORT, () => {
