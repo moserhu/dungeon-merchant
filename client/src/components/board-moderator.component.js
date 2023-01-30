@@ -11,6 +11,7 @@ export default class BoardModerator extends Component {
       content: ""
     };
   }
+  
 
   componentDidMount() {
     UserService.getModeratorBoard().then(
