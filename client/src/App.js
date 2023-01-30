@@ -144,6 +144,7 @@ class App extends Component {
 
         <div className='App'>
           <Routes>
+            <Route path="" element={<Home />} />
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path='/shop' exact element={<Shop />} />
