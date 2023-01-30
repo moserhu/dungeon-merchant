@@ -1,7 +1,7 @@
 const res = require("express/lib/response");
 const db = require("../models");
 const User = db.user;
-const pubItems = require("../packs/pub");
+//const pubItems = require("../packs/pub");
 
 exports.allAccess = (req, res) => {
   res.status(200).send();
@@ -34,6 +34,9 @@ exports.userShops = (req, res) => {
   })
 };
 
+/*
 exports.pub = (req, res) => {
   res.status(200).send(pubItems);
 };
+
+*/

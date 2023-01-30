@@ -29,5 +29,5 @@ module.exports = function(app) {
     controller.adminBoard
   );
 
-  app.get("/api/pub", controller.pub);
+  //app.get("/api/pub", controller.pub);
 };

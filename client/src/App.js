@@ -9,7 +9,7 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Shop from './components/shop.component';
-import Tavern from './components/tavern.component';
+//import Tavern from './components/tavern.component';
 import Profile from "./components/profile.component";
 //import BoardUser from "./components/board-user.component";
 import BoardModerator from "./components/board-moderator.component";
@@ -18,7 +18,7 @@ import ItemDetail from "./components/itemDetail.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
-import TavernPublish from "./components/tavern.publish.component";
+//import TavernPublish from "./components/tavern.publish.component";
 import ShopPublish from "./components/shop.publish.component";
 
 class App extends Component {
@@ -85,13 +85,6 @@ class App extends Component {
                 </Link>
             </li>
             
-            <li className="nav-item">
-                <Link to={`/tavern`} className="nav-link">
-                  Tavern Creator
-                </Link>
-            </li>
-            
-            
 
             {showModeratorBoard && (
               <li className="nav-item">
@@ -148,10 +141,7 @@ class App extends Component {
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path='/shop' exact element={<Shop />} />
-            <Route path='/tavern' element={<Tavern />} />
-            <Route path='/shop/api/:url/:id' element={<ItemDetail />} />
-            <Route path='/tavern/api/:url/:id' element={<ItemDetail />} />
-            <Route path='/tavern/:id' element={<TavernPublish />} />
+            <Route path='/shop/api/:url/:id' element={<ItemDetail />} />       
             <Route path='/shop/:id' element={<ShopPublish />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
