@@ -99,10 +99,10 @@ const TavernDropdown = ({
       id: JSON.stringify((JSON.parse(userData)).uniqid),
       taverns: JSON.stringify(selectedValue),
     };
-      axios.put(API_URL + "update/taverns", { tavernData }, { headers: authHeader() });
+      axios.put("/update/taverns" || API_URL + "update/taverns", { tavernData }, { headers: authHeader() });
       console.log("items Saved");
     } else {
-      window.location.replace(registerLink);
+      window.location.replace("/register" || registerLink);
       alert("Please create an account to save your Tavern!");
     };
     

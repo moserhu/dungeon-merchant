@@ -22,7 +22,7 @@ function ItemDetail() {
             const fetchItem = await fetch(`https://www.dnd5eapi.co/api/${id.url}/${id.id}`);
     
             if (fetchItem.status === 404) {
-                const data = await axios.get(API_URL + `api/${id.url}`);
+                const data = await axios.get(`/api/${id.url}` || API_URL + `api/${id.url}`);
                 const items = await data.data;
                 const item = (items.filter(x => x.index === `${id.id}`)[0])
                 setItem(item);

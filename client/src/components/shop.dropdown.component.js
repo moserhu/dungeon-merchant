@@ -91,10 +91,10 @@ const ShopDropdown = ({
       id: JSON.stringify((JSON.parse(userData)).uniqid),
       shops: JSON.stringify(selectedValue),
     };
-      axios.put(API_URL + "update/shops", { shopData }, { headers: authHeader() });
+      axios.put("/update/shops" || API_URL + "update/shops", { shopData }, { headers: authHeader() });
       console.log("items Saved");
     } else {
-       window.location.replace(registerLink);
+       window.location.replace("/register" || registerLink);
       alert("Please create an account to save your Shop!");
     };
     

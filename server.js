@@ -6,10 +6,6 @@ const path = require("path");
 
 const app = express();
 
-/*
-var corsOptions = {
-  origin: "http://localhost:3000"
-}; */
 
 app.use(cors());
 
@@ -50,9 +46,9 @@ require("./routes/user.routes")(app);
 const PORT = process.env.PORT || 8080;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
+  app.use(express.static(path.resolve(__dirname, "./client/build")));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(path.resolve(__dirname, "./client/build/index.html"));
   });
 };
 

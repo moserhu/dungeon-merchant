@@ -25,7 +25,7 @@ const fetchItems = async () => {
       
  
     const id = urlId;
-    const response = await axios.get(API_URL + "api/fetch/" + id);
+    const response = await axios.get("/api/fetch/" + id || API_URL + "api/fetch/" + id);
         //console.log(response.data[0].shops)
     setItems(JSON.parse(response.data[0].taverns));
 
