@@ -28,10 +28,9 @@ export const CloseIcon = () => {
 const data = window.localStorage.getItem('ShopItems');
 const currentUser = AuthService.getCurrentUser();
 const userData = window.localStorage.getItem('user');
-/*
 const API_URL = "http://localhost:8080/";
 const registerLink = "http://localhost:3000/register";
-*/
+
 
 
 
@@ -92,10 +91,10 @@ const ShopDropdown = ({
       id: JSON.stringify((JSON.parse(userData)).uniqid),
       shops: JSON.stringify(selectedValue),
     };
-      axios.put("/update/shops", { shopData }, { headers: authHeader() });
+      axios.put(API_URL + "update/shops", { shopData }, { headers: authHeader() });
       console.log("items Saved");
     } else {
-       window.location.replace("/register");
+       window.location.replace(registerLink);
       alert("Please create an account to save your Shop!");
     };
     

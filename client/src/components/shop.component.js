@@ -18,7 +18,7 @@ function Shop() {
     const loggedIn = () => {
         const currentUser = AuthService.getCurrentUser();
     
-        
+        const API_URL = "http://localhost:8080/";
 
 
         if (currentUser) {
@@ -28,7 +28,7 @@ function Shop() {
                 
                 const id = (JSON.parse(userData)).uniqid;
                 
-                const response = await axios.get("/api/fetch/" + id);
+                const response = await axios.get(API_URL + "api/fetch/" + id);
 
                 //console.log(response.data[0].shops)
                 const items = JSON.parse(response.data[0].shops);

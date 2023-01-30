@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserService from "../services/user.service";
-import Carousel from "./img-slider/img-slider.component";
+import Carousel from "./img-slider/img-slider.components";
 import { Link } from 'react-router-dom';
 
 import balor from "../img/balor.jpeg";

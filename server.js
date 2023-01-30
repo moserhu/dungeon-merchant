@@ -1,13 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const dbConfig = require("./config/db.config");
-const path = require("path");
 require("dotenv").config();
 
 const app = express();
 
 var corsOptions = {
-  origin: ""
+  origin: "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));
@@ -19,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
-const res = require("./node_modules/express/lib/response");
+const res = require("express/lib/response");
 const Role = db.role;
 
 db.mongoose
@@ -48,10 +47,10 @@ require("./routes/user.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('./client/build'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('build'));
   app.get('*', (req, res) => {
-    req.sendFile(path.resolve(__dirname, './client/build/index.html'));
+    req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
   })
 }
 

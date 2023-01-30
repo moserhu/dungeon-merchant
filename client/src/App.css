@@ -14,7 +14,7 @@ body {
   min-height: 100%;
   background-image: linear-gradient(rgba(234, 223, 223, 0.308),
       rgba(52, 101, 66, 0.276)), url("../src/img/busy-market.jpeg");
-
+  
   background-attachment: fixed;
   background-size: cover;
 }
@@ -34,7 +34,7 @@ html {
 
 }
 
-.buttons {
+.buttons{
   margin-bottom: 1%;
   border: orange solid 2px;
   border-radius: 5px;
@@ -47,18 +47,18 @@ html {
 footer {
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 100px; 
   display: flex;
   /* Height of the footer */
   background-color: rgb(231, 145, 32);
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight:bold;
 }
 
 .mainTitleContainer {
-  margin: 1%;
+ margin: 1%;
   padding: 2%;
   background-image: url("../src/img/wood_board.jpg");
   background-attachment: fixed;
@@ -70,8 +70,8 @@ footer {
 
 .mainTitle {
   padding: 2%;
-  background-color: tan;
-  border-radius: 10px;
+ background-color: tan;
+ border-radius: 10px;
 
 }
 
@@ -175,7 +175,7 @@ footer {
   background: red;
   border: 2px solid black;
   border-radius: 5px;
-
+    
 }
 
 .itemCost {
@@ -198,7 +198,7 @@ footer {
 /* HOME PAGE__________________________________________________________*/
 .homeContainer {
   display: flex;
-
+ 
 }
 
 .contentContainer {
@@ -221,12 +221,12 @@ footer {
 }
 
 .adLink {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;     
 }
 
 .adImage {
@@ -270,22 +270,22 @@ footer {
 }
 
 .sliderText {
-  display: flex;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-  justify-content: space-around;
-  align-items: center;
-  background: #6c8243;
-  border-radius: 30px;
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
+    background: #6c8243;
+    border-radius: 30px;
 }
 
 .sliderTextContainer {
   display: flex;
-  text-decoration: none;
-  color: black;
-  justify-content: space-around;
-  align-items: center;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -401,7 +401,7 @@ footer {
   display: block;
   width: fit-content;
 
-
+  
 }
 
 /*
@@ -480,8 +480,7 @@ added later in JS
   border-radius: 5px;
   align-items: center;
   padding: auto;
-  margin: 10px;
-  ;
+  margin: 10px;;
   position: relative;
 }
 
@@ -498,32 +497,32 @@ added later in JS
 /*PUBLISHED ITEMS ------------------------------------------------ */
 
 .itemsContainer-published {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding-inline: 2rem;
-  grid-auto-rows: minmax(100px, auto);
-  margin-bottom: 5%;
-  margin-top: 1%;
-
-}
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-inline: 2rem;
+    grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 5%;
+    margin-top: 1%;
+   
+  }
 
 .item-container-published {
-  background-image: url(../src/img/wooden-board-h.jpeg);
-  border: 2px solid black;
-  padding: 5%;
-  display: grid;
-  grid-template-rows: repeat(1);
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 10px;
+    background-image: url(../src/img/wooden-board-h.jpeg);
+    border: 2px solid black;
+    padding: 5%;
+    display: grid;
+    grid-template-rows: repeat(1);
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
 }
 
 .item-published {
   background-image: url(../src/img/shutterstock_79257886.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 10px;
+  border-radius: 10px; 
   margin-left: 0;
   margin-right: 0;
 }
@@ -544,12 +543,12 @@ added later in JS
 }
 
 .cost-published {
-  font-size: 2rem;
-
+font-size: 2rem;
+  
 }
 
 .cointType-published {
-  font-size: 1rem;
+ font-size: 1rem;
 }
 
 .itemQuantity-published {
@@ -558,9 +557,4 @@ added later in JS
   padding: 5%;
   margin: 5%;
   font-size: 2rem;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-around;
 }

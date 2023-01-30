@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from 'react-router-dom';
 import AuthService from '../services/auth.service';
 
-
+const API_URL = "http://localhost:8080/";
 
 
 function Tavern() {
@@ -29,7 +29,7 @@ const loggedIn = () => {
                 
                 const id = (JSON.parse(userData)).uniqid;
                 
-                const response = await axios.get("/api/fetch/" + id);
+                const response = await axios.get(API_URL + "api/fetch/" + id);
 
                 //console.log(response.data[0].shops)
                 const items = JSON.parse(response.data[0].taverns);
@@ -58,7 +58,7 @@ const loggedIn = () => {
 
     const fetchTavernItems = async () => {
 
-        const data = await axios.get("/api/pub");
+        const data = await axios.get(API_URL + "api/pub");
         const items = await data.data;
         setItems(items);
     };
