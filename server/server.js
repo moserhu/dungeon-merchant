@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dbConfig = require("./config/db.config");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -48,9 +49,9 @@ require("./routes/user.routes")(app);
 const PORT = process.env.PORT || 8080;
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static('build'));
+  app.use(express.static('client/build'));
   app.get('*', (req, res) => {
-    req.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    req.sendFile(path.resolve(__dirname, "client", 'build', 'index.html'));
   })
 }
 
