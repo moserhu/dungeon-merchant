@@ -16,7 +16,7 @@ useEffect(() => {
     const urlElements = urlPath.split('/');
     const urlSubElement = (urlElements[2].split('%'));
     const urlId = (urlSubElement[0]);
-    const API_URL = "http://localhost:8080/";
+
   
 
     
@@ -25,7 +25,7 @@ const fetchItems = async () => {
       
  
     const id = urlId;
-    const response = await axios.get(API_URL + "api/fetch/" + id);
+    const response = await axios.get("/api/fetch/" + id);
         //console.log(response.data[0].shops)
     setItems(JSON.parse(response.data[0].shops));
 

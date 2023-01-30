@@ -29,10 +29,10 @@ export const CloseIcon = () => {
 const data = window.localStorage.getItem('TavernItems');
 const currentUser = AuthService.getCurrentUser();
 const userData = window.localStorage.getItem('user');
+/*
 const API_URL = "http://localhost:8080/";
 const registerLink = "http://localhost:3000/register";
-
-
+*/
 
 const TavernDropdown = ({
   placeHolder,
@@ -99,10 +99,10 @@ const TavernDropdown = ({
       id: JSON.stringify((JSON.parse(userData)).uniqid),
       taverns: JSON.stringify(selectedValue),
     };
-      axios.put(API_URL + "update/taverns", { tavernData }, { headers: authHeader() });
+      axios.put("/update/taverns", { tavernData }, { headers: authHeader() });
       console.log("items Saved");
     } else {
-      window.location.replace(registerLink);
+      window.location.replace('/register');
       alert("Please create an account to save your Tavern!");
     };
     
