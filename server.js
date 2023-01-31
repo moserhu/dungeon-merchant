@@ -1,5 +1,5 @@
 const express = require("express");
-
+const cors = require("cors");
 const dbConfig = require("./config/db.config");
 require("dotenv").config();
 const path = require("path");
@@ -7,14 +7,18 @@ const path = require("path");
 const app = express();
 
 
+app.use(cors());
 
 
-app.use((req, res, next) => {
-  if (process.env.NODE_ENV === 'production'
-    && req.header('x-forwarded-proto') !== 'https') {
-    res.redirect(`https://${req.header('host')}${req.url}`);
-  } else next();
-});
+
+if (process.env.NODE_ENV === "production") {
+  app.use('/', express.static(path.resolve(__dirname, "./client/build")));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build/index.html"));
+  });
+};
+
+
 // parse requests of content-type - application/json
 app.use(express.json());
 
@@ -25,8 +29,7 @@ const db = require("./models");
 const res = require("express/lib/response");
 const Role = db.role;
 
-/* Build and deployment */
-app.use('/', express.static(path.resolve(__dirname, '../client/build')));
+
 
 db.mongoose
   .connect(`${dbConfig.URI}`, {
@@ -53,12 +56,6 @@ require("./routes/user.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-
-
-/* Build and deployment */
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
