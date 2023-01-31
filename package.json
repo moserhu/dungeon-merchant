@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "build": "cd client && npm run build",
-    "test-build":"npm run build && heroku local" ,
+    "test-build":"cd client && npm run build && heroku local" ,
     "install-client": "cd client && npm install",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-    "start": "node server.js"
-    
+    "start": "node server.js",
+    "test-local":"nodemon server.js && cd client && npm start"
   },
   "engines": {
     "node": "16.17.0"

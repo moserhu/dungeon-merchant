@@ -119,12 +119,15 @@ export default class Home extends Component {
           
         </div>
         <footer className="footer">
-          <div>
-            <p>We are constantly trying to get better so any recommendations or bugs can be sent to 
+          <div className="supportText">
+            <p >We are constantly trying to get better so any recommendations or bugs can be sent to 
               support@dungeonmerchant.com
             </p>
           </div>
-          <p>Dungeon Merchant 2023</p>
+          <div>
+            <p>Dungeon Merchant 2023</p>
+          </div>
+          
         </footer>
       </div>
     );
