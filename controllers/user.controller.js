@@ -26,8 +26,10 @@ exports.userShops = (req, res) => {
       res.status(500).send("ERROR")
     } else {
       if (data.length == 0) {
+        console.log("no data");
         res.status(500).send("no data")
       } else {
+        console.log("success");
         res.status(200).send(data);
       }
     }

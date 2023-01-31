@@ -15,7 +15,7 @@ module.exports = function(app) {
 
   app.get("/api/test/user", [authJwt.verifyToken], controller.userBoard);
 
-  app.get("/api/fetch/:id", controller.userShops );
+  app.get("/api/fetch/:id", controller.userShops);
 
   app.get(
     "/api/test/mod",

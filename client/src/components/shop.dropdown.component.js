@@ -113,7 +113,7 @@ const ShopDropdown = ({
           {(selectedValue).map((option) => (
             <div key={option.id} className='items'>
                 <span >
-                      <h1><Link className='itemNames' to={`/tavern${option.url}`}>{option.value}</Link> </h1>
+                      <h1><Link className='itemNames' to={`/shop${option.url}`}>{option.value}</Link> </h1>
                       
                               <span key={option.id} className="itemCost">
                                   <input className="cost" data-id={option.id} value={option.cost} onChange={handleCostChange} type="text" maxLength='6' id="cost"  name="cost" />
