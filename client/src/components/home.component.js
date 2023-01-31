@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import UserService from "../services/user.service";
 import Carousel from "./img-slider/img-slider.components";
 import { Link } from 'react-router-dom';
+import "../App.css";
 
 import balor from "../img/balor.jpeg";
 import gametable from "../img/gametable.jpeg";
