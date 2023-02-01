@@ -104,7 +104,7 @@ export default class Home extends Component {
           </p>
         </div>
         <span> 
-          <Link className="buttons" style={{padding: "1%"}} to={'/shop/'}>Build your first shop now!</Link>
+          <Link className="buttons buildShopbutton" style={{padding: "1%"}} to={'/shop/'}>Build your first shop now!</Link>
         </span>
         <div className="adContainer">
             <a href="https://www.dmsguild.com/product/419531/The-Desolation-of-Dawn">

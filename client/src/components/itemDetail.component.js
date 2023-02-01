@@ -40,7 +40,8 @@ function ItemDetail() {
                 <h1 className='title'>
                     {item.name}
                 </h1>
-                <div className='text'>
+            <div className='itemDescContainer'>
+                <div className='itemDesc'>
                     <div className='itemType'>
                         {item.desc}
                         {desc.length === 0 &&
@@ -50,6 +51,7 @@ function ItemDetail() {
                         }
                     </div>
                 </div>
+            </div>
             </div>
         );
 

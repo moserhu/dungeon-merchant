@@ -97,8 +97,8 @@ class Login extends Component {
               this.form = c;
             }}
           >
-            <div className="form-group">
               <label htmlFor="username">Username</label>
+             <div>
               <Input
                 type="text"
                 className="form-control"
@@ -123,7 +123,7 @@ class Login extends Component {
 
             <div className="form-group">
               <button
-                className="btn btn-primary btn-block"
+                className="btn btn-primary btn-block loginBtn"
                 disabled={this.state.loading}
               >
                 {this.state.loading && (
