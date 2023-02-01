@@ -86,10 +86,7 @@ footer {
 
 }
 
-.nav-link:visited {
-  text-decoration: none;
-  color: white;
-}
+
 
 
 /* NAVBAR------------------------------------------------------------------------*/
@@ -99,6 +96,16 @@ nav {
  list-style: none;
   border-bottom: solid white 1px;
 
+}
+
+.nav-link:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-brand:visited{
+  text-decoration: none;
+  color: rgb(255, 153, 0); ;
 }
 
 .nav-link:hover {
@@ -116,8 +123,6 @@ nav {
 
 .navbar-right{
   display:flex
-  
-  
 
 }
 
