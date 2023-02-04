@@ -76,25 +76,33 @@ function Shop() {
         
         const magicItemResults = magicItems.results;
         const equipmentItemsResults = equipmentItems.results;
+        
         const unsortedItems = magicItemResults.concat(equipmentItemsResults);
         const sortedItems = unsortedItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
         
         const items = sortedItems;
         setItems(items);
+        
     };
 
+    
+
+
     const options = items.map((item) => {
+        
+
         return {
             value: item.name,
             label: item.name,
             url: item.url,
             id: uniqid(),
-            cost: 0,
+            cost: [],
             coinType: "GP",
-            quantity: 0
+            quantity: []
         };
 
     }, [])
+
 
     return (
         <div className='App'key={items.id} >

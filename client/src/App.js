@@ -9,18 +9,19 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Shop from './components/shop.component';
-//import Tavern from './components/tavern.component';
+//import Tavern from './components/tavern/tavern.component';
 import Profile from "./components/profile.component";
-//import BoardUser from "./components/board-user.component";
-import BoardModerator from "./components/board-moderator.component";
-import BoardAdmin from "./components/board-admin.component";
+//import BoardUser from "./components/boards/board-user.component";
+import BoardModerator from "./components/boards/board-moderator.component";
+import BoardAdmin from "./components/boards/board-admin.component";
 import ItemDetail from "./components/itemDetail.component";
 
 // import AuthVerify from "./common/auth-verify";
 //import EventBus from "./common/EventBus";
-//import TavernPublish from "./components/tavern.publish.component";
+//import TavernPublish from "./components/tavern/tavern.publish.component";
 import ShopPublish from "./components/shop.publish.component";
 import NavBar from "./components/navbar.component";
+import PriceCheck from "./components/price-check/price-check.component";
 
 class App extends Component {
   
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/price-check" element={<PriceCheck/>} />
             <Route path="/mod" element={<BoardModerator />} />
             <Route path="/admin" element={<BoardAdmin />} />
           </Routes>

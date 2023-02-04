@@ -3,7 +3,7 @@ import TavernDropdown from './tavern.dropdown.component';
 import uniqid from 'uniqid';
 import axios from "axios";
 import { Link } from 'react-router-dom';
-import AuthService from '../services/auth.service';
+import AuthService from '../../services/auth.service';
 
 const API_URL = "http://localhost:8080/";
 

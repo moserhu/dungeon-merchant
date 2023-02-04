@@ -1,0 +1,38 @@
+
+
+.priceCheckContainer {
+    margin-top: 10vh;
+}
+
+.priceCheckTitle {
+font-size: 10vh;
+}
+
+.priceContainer {
+margin: 1rem;
+background-image: url("../../img/wood_board.jpg");
+background-attachment: fixed;
+background-size: cover;
+justify-content: center;
+border: black solid 2px;
+}
+
+.priceWrapper {
+    background: tan;
+    margin: 1rem;
+    border-radius: 5px;
+    border: rgba(209, 202, 202, 0.775) solid 2px;
+}
+
+
+.costTitle{
+font-size: 5vh;
+color: rgb(6, 5, 3);
+text-decoration: underline;
+
+}
+
+.price {
+font-size: 10vh;
+}
+

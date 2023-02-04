@@ -111,6 +111,7 @@ const ShopDropdown = ({
           <div className='itemsContainer'>
               
           {(selectedValue).map((option) => (
+
             <div key={option.id} className='items'>
                 <span >
                       <h1><Link className='itemNames' to={`/shop${option.url}`}>{option.value}</Link> </h1>
@@ -151,6 +152,10 @@ const ShopDropdown = ({
     
         return selectedValue.label;
   };
+
+
+//Cost value recomendation-------------------------------------//
+  
 
 //---QUANTITY VALUE HANDLER---------------------------------------------------------------
   const handleQuantityChange = (event) => {

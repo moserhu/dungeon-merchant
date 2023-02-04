@@ -27,10 +27,12 @@ function ItemDetail() {
                 const item = (items.filter(x => x.index === `${id.id}`)[0])
                 setItem(item);
                 setDesc(item.desc);
+                
             } else {
                 const item = await fetchItem.json();
                 setItem(item);
                 setDesc(item.desc);
+                console.log(item)
             }
 
         }
