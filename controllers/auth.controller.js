@@ -7,28 +7,70 @@ const Role = db.role;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const { user } = require("../models");
+const res = require("express/lib/response");
 
 exports.saveShopItems = async (req, res) => {
  
-  let upid = JSON.parse(req.body.shopData.id);
-  let upshops = req.body.shopData.shops;
- 
+  let userId = JSON.parse(req.body.shopData.id);
+  let userShopId = req.body.shopData.shopId;
+  let upItems = req.body.shopData.items;
+  let upShopName = req.body.shopData.shopName;
+  let hasShop = await User.countDocuments({ id: userId, "shops.shopId": userShopId });
+  const filter = { id: userId, "shops.shopId": userShopId };
 
-   User.findOneAndUpdate({ id:upid }, { $set: { shops: upshops} },
-    { new: true }, (err, data) => {
-      if (err) {
-        res.send("ERROR")
-      } else {
-        if (data === null) {
-          console.log("nothing")
-          res.send("nothing found")
-        } else {
-          res.send(data)
-          console.log("items saved")
+  if (hasShop > 0) {
+    await User.updateOne(
+       filter ,
+      {
+        $set: {
+            "shops.$.shopName": upShopName,
+            "shops.$.items": upItems
+          
+        }
+      }, { new: true }
+    );
+  } else {
+    await User.updateOne(
+      { id: userId },
+      {
+        $push: {
+          shops:
+          {
+            shopId: userShopId,
+            shopName: upShopName,
+            items: upItems
+          }
         }
       }
-   })
+    );
+
+  } 
+  
 };
+
+exports.deleteShop = async (req, res) => {
+let userId = req.query.id;
+let userShopId = req.query.shopId;
+ const filter = { id: userId };
+ // let userShopName = req.body.shopData.shopName;
+  try {
+    await User.findOneAndUpdate(
+      filter,
+      {
+        $pull: {
+          shops:
+            {
+            shopId: userShopId      
+         }
+        } 
+      }
+    );
+    console.log("shop deleted");
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
 exports.saveTavernItems = async (req, res) => {
  
@@ -53,9 +95,6 @@ exports.saveTavernItems = async (req, res) => {
       }
    })
 };
-
-
-
 
 exports.signup = (req, res) => {
   const user = new User({

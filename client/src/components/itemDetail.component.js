@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { useParams } from 'react-router-dom';
 import axios from "axios";
-const API_URL = "http://localhost:8080/";
 
 
 
@@ -22,7 +21,7 @@ function ItemDetail() {
             const fetchItem = await fetch(`https://www.dnd5eapi.co/api/${id.url}/${id.id}`);
     
             if (fetchItem.status === 404) {
-                const data = await axios.get(`/api/${id.url}` || API_URL + `api/${id.url}`);
+                const data = await axios.get(`/api/${id.url}`);
                 const items = await data.data;
                 const item = (items.filter(x => x.index === `${id.id}`)[0])
                 setItem(item);

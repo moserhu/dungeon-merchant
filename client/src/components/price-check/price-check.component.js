@@ -62,7 +62,7 @@ function PriceCheck() {
             <PriceCheckDropdown
                     isSearchable
                     isMulti
-                    placeHolder="Search"
+                    placeHolder="Search Items"
                     options={options}
                     onChange={(value)=> console.log(value)}
                 />

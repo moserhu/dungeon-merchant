@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ShopDropdown from './shop.dropdown.component';
 import uniqid from 'uniqid';
-import axios from "axios";
-import { Link } from 'react-router-dom';
-import AuthService from '../services/auth.service';
+
 
 
 function Shop() {
@@ -11,52 +9,7 @@ function Shop() {
         fetchShopItems();
     }, []);
 
-   
     const [items, setItems] = useState([]);
-    
-
-    const loggedIn = () => {
-        const currentUser = AuthService.getCurrentUser();
-    
-        const API_URL = "http://localhost:8080/";
-
-        
-        if (currentUser) {
-            const userData = window.localStorage.getItem('user');
-           
-            const fetchItems = async () => {
-                
-                const id = (JSON.parse(userData)).uniqid;
-                
-                
-                const response = await axios.get( '/api/fetch/' + id || API_URL+ id);
-              
-                      
-                //console.log(response.data[0].shops)
-                const items = await JSON.parse(response.data[0].shops);
-                
-                window.localStorage.setItem('ShopItems', JSON.stringify(items));
-                
-            };
-            
-            return (
-                <div>
-                    <button className="buttons" onClick={async () => {
-                        const run =
-                            await fetchItems();
-                        window.location.reload();
-                        return run;
-                    }}>Open shop</button>
-                    <div><Link className='buttons' to={`/shop/${JSON.parse(userData).uniqid}}`}>Publish Shop</Link> </div>
-                </div>
-            );
-        };
-        
-    };
-
-
-
-
 
     const fetchShopItems = async () => {
 
@@ -85,9 +38,6 @@ function Shop() {
         
     };
 
-    
-
-
     const options = items.map((item) => {
         
 
@@ -106,20 +56,19 @@ function Shop() {
 
     return (
         <div className='App'key={items.id} >
-    <h1 className='title'>Shop Creator</h1>
-       
+   
+        
             <ShopDropdown
                     isSearchable
                     isMulti
-                    placeHolder="Select..."
+                    placeHolder="Select Shop Items..."
                     options={options}
                     onChange={(value)=> console.log(value)}
                 />
-            {loggedIn()}
-          
+            
         </div>
   );
-}
+};
     
 
 

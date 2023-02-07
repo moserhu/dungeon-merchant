@@ -4,6 +4,7 @@ import '../App.css';
 import axios from "axios";
 import authHeader from '../services/auth-header';
 import AuthService from '../services/auth.service';
+import uniqid from 'uniqid';
 
 
 
@@ -25,14 +26,8 @@ export const CloseIcon = () => {
 
 
 
-const data = window.localStorage.getItem('ShopItems');
 const currentUser = AuthService.getCurrentUser();
 const userData = window.localStorage.getItem('user');
-const API_URL = "http://localhost:8080/";
-const registerLink = "http://localhost:3000/register";
-
-
-
 
 const ShopDropdown = ({
   placeHolder,
@@ -45,10 +40,12 @@ const ShopDropdown = ({
   const [showMenu, setShowMenu] = useState(false);
   const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
   const [searchValue, setSearchValue] = useState("");
+  const [shopName, setShopName] = useState("");
+  const [shops, setShops] = useState([]);
+  const [shopId, setShopId] = useState("");
   const searchRef = useRef();
   const inputRef = useRef();
-
-
+  
   useEffect(() => {
     setSearchValue("");
     if (showMenu && searchRef.current) {
@@ -68,37 +65,71 @@ const ShopDropdown = ({
       window.removeEventListener("click", handler);
     };
   });
+
   const handleInputClick = (e) => {
     setShowMenu(!showMenu);
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     if (data !== null) setSelectedValue(JSON.parse(data))
   }, []);
+  */
   
   useEffect(() => {
     window.localStorage.setItem('ShopItems', JSON.stringify(selectedValue))
   }, [selectedValue]);
-
-
+  
+  useEffect(() => {
+        if (currentUser) { 
+        fetchShops();    
+    }; 
+  }, [selectedValue]);
+  
+useEffect(() => {
+        if (currentUser) { 
+          shopButtons();    
+    }; 
+  }, []);
+  
+  
 
   //Save function to send currently selected items to the
   
   function saveShopItems() {
-
     if (currentUser) {
       const shopData = {
-      id: JSON.stringify((JSON.parse(userData)).uniqid),
-      shops: JSON.stringify(selectedValue),
-    };
-      axios.put("/update/shops" || API_URL + "update/shops", { shopData }, { headers: authHeader() });
+        id: JSON.stringify((JSON.parse(userData)).uniqid),
+        shopId: shopId,
+        shopName: shopName, 
+        items: JSON.stringify(selectedValue)
+      }
+      axios.put("/update/shops" , { shopData }, { headers: authHeader() });
       console.log("items Saved");
     } else {
-       window.location.replace("/register" || registerLink);
       alert("Please create an account to save your Shop!");
+      window.location.replace("/register");
     };
     
   };
+
+  const saveButton = () => {
+    const publishButton = document.querySelector('#publish');
+    const deleteButton = document.querySelector('#delete');
+    saveShopItems();
+    if (currentUser) { 
+  deleteButton.classList.remove('deleteButton');
+  publishButton.classList.remove('publishButton');
+    setTimeout(() => {
+      fetchShops();
+      shopButtons();
+   
+    }, "2000");
+    alert(" Shop Saved ");
+    } else {
+      return
+  };
+    };
+
 
 //display function to put selected items on page____________________
 
@@ -111,7 +142,7 @@ const ShopDropdown = ({
           <div className='itemsContainer'>
               
           {(selectedValue).map((option) => (
-
+            
             <div key={option.id} className='items'>
                 <span >
                       <h1><Link className='itemNames' to={`/shop${option.url}`}>{option.value}</Link> </h1>
@@ -255,11 +286,6 @@ const ShopDropdown = ({
                     updateItems();
                     setSelectedValue(JSON.parse(window.localStorage.getItem('ShopItems')));
                 }
-                
-                
-               
-
-
 
                 select.classList.remove('cost-select-clicked');
                 caret.classList.remove('cost-caret-rotate');
@@ -275,11 +301,129 @@ const ShopDropdown = ({
         });
     });
     
-
-
+    //Shop Organizer_______________________---
+  
+    const getShopName = (e) => {
     
-    //___________________________________________________________-
-       
+     setShopName(e.target.value);
+      
+    };
+
+  const newShop = () => {
+    const shopNameTitle = document.querySelector('#shopTitle');
+    const shopNameTitleText = document.querySelector('#shopTitleText');
+    const deleteButton = document.querySelector('#delete');
+    const publishButton = document.querySelector('#publish');
+    shopNameTitle.classList.remove('shopTitle');
+    shopNameTitleText.classList.remove('shopTitleText');
+    deleteButton.classList.add('deleteButton');
+    publishButton.classList.add('publishButton');
+    shopNameTitleText.classList.add('shopTitleText-active');
+    shopNameTitle.classList.add('shopTitle-active');
+
+    setShopId(uniqid());
+    setSelectedValue([]);
+    setShopName("Enter Shop Name Here");
+    if (!currentUser) {
+      alert("You're not logged in to an account, to save your shop please log in or create an account");
+    } else {
+      return
+    }
+    
+  };
+
+const fetchShops = async () => {
+        
+        const userData = window.localStorage.getItem('user');
+        const id = (JSON.parse(userData)).uniqid;
+
+        const response = await axios.get('/api/fetch/' + id );        
+        const fetchedShops = await (response.data[0]).shops;
+        setShops(fetchedShops);
+};
+
+    const shopItemsClicked = event => {
+      let value = event.target.value;
+      let id = event.target.dataset.id;
+      let name = String(event.target.dataset.name);
+      setShopName(name);
+      setShopId(id);
+      setSelectedValue(JSON.parse(value));
+      const shopNameTitle = document.querySelector('#shopTitle');
+      const deleteButton = document.querySelector('#delete');
+      const shopNameTitleText = document.querySelector('#shopTitleText');
+      const publishButton = document.querySelector('#publish');
+      deleteButton.classList.remove('deleteButton');
+      shopNameTitle.classList.remove('shopTitle');
+      shopNameTitleText.classList.remove('shopTitleText');
+      publishButton.classList.remove('publishButton');
+      shopNameTitleText.classList.add('shopTitleText-active');
+      shopNameTitle.classList.add('shopTitle-active');
+
+    };
+  
+    const shopButtons = () => {
+        if (shops.length > 0) {
+            return (
+                <div>
+                    {(shops).map((shop) => (
+                        <button className="buttons" data-name={shop.shopName} data-id={shop.shopId} value={shop.items} onClick={shopItemsClicked} >
+                        {shop.shopName}
+                      </button>
+                    ))}
+
+                </div>
+            );
+        };
+    };
+
+    //____________Delete_Shops_______________________________________________-
+   
+  
+  const deleteShop = async () => {
+    if (currentUser) {
+      const shopData = {
+        id: ((JSON.parse(userData)).uniqid),
+        shopId: shopId,
+        shopName: shopName,
+      }
+      try {
+        await axios.delete("/delete/shop/", {params: shopData});
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    return
+  };
+  
+  const deleteButton = () => {
+    deleteShop();
+    if (currentUser) { 
+    setTimeout(() => {
+      fetchShops();
+      shopButtons();
+   
+    }, "2000");
+      alert(" Shop Saved ");
+      window.location.reload();
+    } else {
+      return
+  };
+  };
+
+//____________Publish Button________________________________________
+  const publishButton = () => {
+    if (currentUser) {
+      return (
+        <div><Link id="publish" className="publishButton buttons" to={`/shop/${JSON.parse(userData).uniqid}/${shopId}/${shopName}`}>Publish Shop</Link> </div>
+      )
+    } else {
+      return
+    }
+  };
+
+
+  //_________________________________________________________________________
   const removeOption = (option) => {
     return selectedValue.filter((o) => o.value !== option.value);
   };
@@ -336,11 +480,16 @@ const ShopDropdown = ({
 
   };
 
+  const currentShop = () => {
+    <input id="shopTitleText" className="shopTitleText" value={shopName} onChange={getShopName} type="text" />
+  };
 
 
   
   return (
     <div>
+       <h1 className='title'>Shop Creator</h1>
+      {shopButtons()}
       <div className="dropdown-container">
       <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
         <div className="dropdown-tools">
@@ -348,7 +497,7 @@ const ShopDropdown = ({
                           <Icon />
                           {placeHolder}
           </div>
-        </div>
+          </div>
       </div>
       {showMenu && (
         <div className="dropdown-menu-main">
@@ -368,9 +517,17 @@ const ShopDropdown = ({
           ))}
         </div>
       )}
-        </div>
+      </div>
+      
+      <div id="shopTitle" className="shopTitle"> 
+        {currentShop()}
+        <input id="shopTitleText" className="shopTitleText" value={shopName} onChange={getShopName} minLength="1" type="text" />
+        <button id="delete" className="deleteButton buttons" onClick={() => deleteButton()}>Delete Shop</button>
+      </div>
       <div>{getDisplay()}</div>
-      <button className="buttons" onClick={() => saveShopItems()} >Save shop</button>
+      <button className="buttons" onClick={() => saveButton()} >Save shop</button>
+      <button className="buttons" onClick={() => newShop()} >New Shop</button>
+      {publishButton()}
     </div>
   );
 };

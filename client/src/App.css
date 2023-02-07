@@ -36,12 +36,14 @@ body {
 }
 
 .buttons{
-  margin-bottom: 1%;
+  margin-bottom: 2px;
   border: orange solid 2px;
   border-radius: 5px;
   background-color: black;
   color: orange;
   padding: 3px;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .buttons:hover{
@@ -76,7 +78,7 @@ footer {
   background-size: cover;
   margin-bottom: 50px;
   border-radius: 10px;
-  border: solid black 2px;;
+  border: solid black 2px;
 
 }
 
@@ -86,9 +88,6 @@ footer {
  border-radius: 10px;
 
 }
-
-
-
 
 /* NAVBAR------------------------------------------------------------------------*/
 nav {
@@ -188,6 +187,7 @@ nav {
   border-radius: 50%;
 }
 
+
 /*---------------------ITEM ORGANIZATION STYLES -----------------------------*/
 .itemsContainer {
   display: grid;
@@ -285,6 +285,7 @@ nav {
   color: white;
   bottom: 0px;
 }
+
 
 .cost {
   background: rgb(102, 34, 34);
@@ -511,6 +512,37 @@ nav {
 Clicked styles
 added later in JS
 */
+.publishButton,
+.deleteButton,
+.shopTitle,
+.shopTitleText {
+  display: none;
+}
+
+.shopTitle-active{
+      width: 90%;
+      margin: auto;
+      padding: 1%;
+      background-image: url("../src/img/wood_board.jpg");
+      background-attachment: fixed;
+      background-size: cover;
+      margin-bottom: 25px;
+      margin-top: 25px;
+      border-radius: 10px;
+      border: solid black 5px;
+}
+
+.shopTitleText-active{
+    display: flex;
+    margin: auto;
+    width: 90%;
+    text-decoration: underline;
+    font-size: 10vh;
+    text-align: center;
+    padding: 2%;
+    background-color: tan;
+    border-radius: 10px;
+}
 
 .cost-select-clicked {
   border: 2px #26489a solid;
@@ -811,5 +843,9 @@ footer{
     display: flex;
     justify-content: space-around;
   }
+
+    .shopTitleText-active{
+      font-size: 5vh;
+    }
 }
 

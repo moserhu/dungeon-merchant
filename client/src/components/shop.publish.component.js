@@ -14,35 +14,24 @@ useEffect(() => {
 
     const urlPath = window.location.pathname;
     const urlElements = urlPath.split('/');
-    const urlSubElement = (urlElements[2].split('%'));
-    const urlId = (urlSubElement[0]);
-    //const API_URL = "http://localhost:8080/";
-  
-
-    
+    const userId = (urlElements[2]);
+    const shopId = (urlElements[3]);
+    const shopNameFull = (urlElements[4]);
+    const shopName = shopNameFull.replace("%20", " ");
 
 const fetchItems = async () => {
-      
- 
-    const id = urlId;
-    const response = await axios.get( "/api/fetch/" + id);
-        //console.log(response.data[0].shops)
-    setItems(JSON.parse(response.data[0].shops));
-
-  
-  };
-
-
-   
-  
+    const id = userId
+    const currentShopId = shopId;
+    const response = await axios.get("/api/fetch/" + id);
+    const shopArray = response.data[0].shops;
+    const shop = shopArray.find(obj => obj.shopId === currentShopId);
     
+    setItems(JSON.parse(shop.items));
+};
     
-   
-
-
     return (
         <div >
-            <h1 className='title'>Shop</h1>
+            <h1 className='title'>{shopName}</h1>
             <div className='itemsContainer'>
             
                     {items.map(item => (

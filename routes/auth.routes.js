@@ -25,4 +25,6 @@ module.exports = function(app) {
   app.put("/update/shops", controller.saveShopItems);
 
   //app.put("/update/taverns", controller.saveTavernItems);
+
+  app.delete("/delete/shop/", controller.deleteShop);
 };
