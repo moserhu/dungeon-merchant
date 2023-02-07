@@ -1,3 +1,4 @@
+const { authJwt } = require("../middlewares");
 const { verifySignUp } = require("../middlewares");
 const controller = require("../controllers/auth.controller");
 
@@ -26,5 +27,5 @@ module.exports = function(app) {
 
   //app.put("/update/taverns", controller.saveTavernItems);
 
-  app.delete("/delete/shop/", controller.deleteShop);
+  app.delete("/delete/shop/", [authJwt.verifyToken], controller.deleteShop);
 };
