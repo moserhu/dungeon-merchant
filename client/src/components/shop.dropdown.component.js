@@ -388,7 +388,7 @@ const fetchShops = async () => {
         shopName: shopName,
       }
       try {
-        await axios.delete("/delete/shop/", {params: shopData});
+        await axios.delete("/delete/shop/", {params: shopData, headers: authHeader()} );
       } catch (err) {
         console.error(err);
       }
@@ -404,7 +404,7 @@ const fetchShops = async () => {
       shopButtons();
    
     }, "2000");
-      alert(" Shop Saved ");
+      alert(" Shop Deleted ");
       window.location.reload();
     } else {
       return
