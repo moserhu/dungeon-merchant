@@ -17,7 +17,7 @@ useEffect(() => {
     const userId = (urlElements[2]);
     const shopId = (urlElements[3]);
     const shopNameFull = (urlElements[4]);
-    const shopName = shopNameFull.replace("%20", " ");
+    const shopName = shopNameFull.replaceAll("%20", " ");
 
 const fetchItems = async () => {
     const id = userId
