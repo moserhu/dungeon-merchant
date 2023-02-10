@@ -310,6 +310,11 @@ useEffect(() => {
     };
 
   const newShop = () => {
+if (!currentUser) {
+  alert("You're not logged in to an account, to save your shop please log in or create an account");
+  window.location.replace("/register");
+} else {
+  
     const shopNameTitle = document.querySelector('#shopTitle');
     const shopNameTitleText = document.querySelector('#shopTitleText');
     const deleteButton = document.querySelector('#delete');
@@ -328,10 +333,6 @@ useEffect(() => {
     setShopId(uniqid());
     setSelectedValue([]);
     setShopName("Enter Shop Name Here");
-    if (!currentUser) {
-      alert("You're not logged in to an account, to save your shop please log in or create an account");
-    } else {
-      return
     }
     
   };
