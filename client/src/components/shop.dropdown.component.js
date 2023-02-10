@@ -423,8 +423,11 @@ const fetchShops = async () => {
 //____________Publish Button________________________________________
   const publishButton = () => {
     if (currentUser) {
+
       return (
-        <div><Link id="publish" className="publishButton buttons" to={`/shop/${JSON.parse(userData).uniqid}/${shopId}/${shopName}`}>Publish Shop</Link> </div>
+        <div><Link id="publish" onClick={() => {
+          saveShopItems(); alert("Going to your published shop now!")
+        }} className="publishButton buttons" to={`/shop/${JSON.parse(userData).uniqid}/${shopId}/${shopName}`}>Publish Shop</Link> </div>
       )
     } else {
       return
