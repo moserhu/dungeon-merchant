@@ -512,6 +512,8 @@ nav {
 Clicked styles
 added later in JS
 */
+.dropdown-container,
+.saveButton,
 .publishButton,
 .deleteButton,
 .shopTitle,

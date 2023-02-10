@@ -314,6 +314,10 @@ useEffect(() => {
     const shopNameTitleText = document.querySelector('#shopTitleText');
     const deleteButton = document.querySelector('#delete');
     const publishButton = document.querySelector('#publish');
+    const saveButton = document.querySelector('#save');
+    const itemsDrop = document.querySelector('#itemsDropdown');
+    itemsDrop.classList.remove('dropdown-container');
+    saveButton.classList.remove('saveButton');
     shopNameTitle.classList.remove('shopTitle');
     shopNameTitleText.classList.remove('shopTitleText');
     deleteButton.classList.add('deleteButton');
@@ -353,6 +357,10 @@ const fetchShops = async () => {
       const deleteButton = document.querySelector('#delete');
       const shopNameTitleText = document.querySelector('#shopTitleText');
       const publishButton = document.querySelector('#publish');
+      const saveButton = document.querySelector('#save');
+      const itemsDrop = document.querySelector('#itemsDropdown');
+      itemsDrop.classList.remove('dropdown-container');
+      saveButton.classList.remove('saveButton');
       deleteButton.classList.remove('deleteButton');
       shopNameTitle.classList.remove('shopTitle');
       shopNameTitleText.classList.remove('shopTitleText');
@@ -490,7 +498,12 @@ const fetchShops = async () => {
     <div>
        <h1 className='title'>Shop Creator</h1>
       {shopButtons()}
-      <div className="dropdown-container">
+      <div id="shopTitle" className="shopTitle"> 
+        {currentShop()}
+        <input id="shopTitleText" className="shopTitleText" value={shopName} onChange={getShopName} minLength="1" type="text" />
+        <button id="delete" className="deleteButton buttons" onClick={() => deleteButton()}>Delete Shop</button>
+      </div>
+      <div id="itemsDropdown" className="dropdown-container">
       <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
         <div className="dropdown-tools">
           <div className="dropdown-tool">
@@ -519,13 +532,9 @@ const fetchShops = async () => {
       )}
       </div>
       
-      <div id="shopTitle" className="shopTitle"> 
-        {currentShop()}
-        <input id="shopTitleText" className="shopTitleText" value={shopName} onChange={getShopName} minLength="1" type="text" />
-        <button id="delete" className="deleteButton buttons" onClick={() => deleteButton()}>Delete Shop</button>
-      </div>
+      
       <div>{getDisplay()}</div>
-      <button className="buttons" onClick={() => saveButton()} >Save shop</button>
+      <button id="save" className="buttons saveButton" onClick={() => saveButton()} >Save shop</button>
       <button className="buttons" onClick={() => newShop()} >New Shop</button>
       {publishButton()}
     </div>
