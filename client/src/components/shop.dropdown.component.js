@@ -316,7 +316,7 @@ useEffect(() => {
     const publishButton = document.querySelector('#publish');
     const saveButton = document.querySelector('#save');
     const itemsDrop = document.querySelector('#itemsDropdown');
-    itemsDrop.classList.remove('dropdown-container');
+    itemsDrop.classList.remove('itemsDropdown');
     saveButton.classList.remove('saveButton');
     shopNameTitle.classList.remove('shopTitle');
     shopNameTitleText.classList.remove('shopTitleText');
@@ -359,7 +359,7 @@ const fetchShops = async () => {
       const publishButton = document.querySelector('#publish');
       const saveButton = document.querySelector('#save');
       const itemsDrop = document.querySelector('#itemsDropdown');
-      itemsDrop.classList.remove('dropdown-container');
+      itemsDrop.classList.remove('itemsDropdown');
       saveButton.classList.remove('saveButton');
       deleteButton.classList.remove('deleteButton');
       shopNameTitle.classList.remove('shopTitle');
@@ -503,7 +503,7 @@ const fetchShops = async () => {
         <input id="shopTitleText" className="shopTitleText" value={shopName} onChange={getShopName} minLength="1" type="text" />
         <button id="delete" className="deleteButton buttons" onClick={() => deleteButton()}>Delete Shop</button>
       </div>
-      <div id="itemsDropdown" className="dropdown-container">
+      <div id="itemsDropdown" className="dropdown-container itemsDropdown">
       <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
         <div className="dropdown-tools">
           <div className="dropdown-tool">
