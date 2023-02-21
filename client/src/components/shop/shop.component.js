@@ -40,6 +40,29 @@ function Shop() {
 
     const options = items.map((item) => {
         
+     /*   
+        const ifCost = () => {
+            const itemUrl = item.url;
+            const urlSplit = itemUrl.split('/');
+            const itemType = (urlSplit[2]);
+
+            if (itemType === "magic-items") {
+                return 0;
+            } else {
+                const url = this;
+                //const cost = itemData.cost;
+                //const price = cost.quantity;
+                    console.log(url);    
+ 
+            
+                return 1;
+                
+            }
+
+        };
+
+*/
+
 
         return {
             value: item.name,
@@ -47,7 +70,7 @@ function Shop() {
             url: item.url,
             id: uniqid(),
             cost: [],
-            coinType: "GP",
+            coinType: "gp",
             quantity: []
         };
 

@@ -31,7 +31,6 @@ function ItemDetail() {
                 const item = await fetchItem.json();
                 setItem(item);
                 setDesc(item.desc);
-                console.log(item)
             }
 
         }

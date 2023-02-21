@@ -7,8 +7,8 @@ import "./App.css";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
-import Home from "./components/home.component";
-import Shop from './components/shop.component';
+import Home from "./components/home/home.component";
+import Shop from './components/shop/shop.component';
 //import Tavern from './components/tavern/tavern.component';
 import Profile from "./components/profile.component";
 //import BoardUser from "./components/boards/board-user.component";
@@ -19,8 +19,8 @@ import ItemDetail from "./components/itemDetail.component";
 // import AuthVerify from "./common/auth-verify";
 //import EventBus from "./common/EventBus";
 //import TavernPublish from "./components/tavern/tavern.publish.component";
-import ShopPublish from "./components/shop.publish.component";
-import NavBar from "./components/navbar.component";
+import ShopPublish from "./components/shop/shop.publish.component";
+import NavBar from "./components/navbar/navbar.component";
 import PriceCheck from "./components/price-check/price-check.component";
 
 class App extends Component {

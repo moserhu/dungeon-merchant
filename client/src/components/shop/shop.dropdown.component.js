@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from 'react-router-dom';
-import '../App.css';
+import '../../App.css';
+import './shop.css';
 import axios from "axios";
-import authHeader from '../services/auth-header';
-import AuthService from '../services/auth.service';
+import authHeader from '../../services/auth-header';
+import AuthService from '../../services/auth.service';
 import uniqid from 'uniqid';
 
 
@@ -79,32 +80,47 @@ const ShopDropdown = ({
     window.localStorage.setItem('ShopItems', JSON.stringify(selectedValue))
   }, [selectedValue]);
   
+  
   useEffect(() => {
-        if (currentUser) { 
-        fetchShops();    
-    }; 
+    fetchShops()
   }, [selectedValue]);
   
-useEffect(() => {
-        if (currentUser) { 
-          shopButtons();    
-    }; 
-  }, []);
+/*
+  useEffect(() => {
+    saveShopItems();
+    
+  }, [selectedValue]);
   
-  
+*/
 
   //Save function to send currently selected items to the
   
-  function saveShopItems() {
+  async function saveShopItems() {
+    const publishButton = document.querySelector('#publish');
+    const deleteButton = document.querySelector('#delete');
+    let items = window.localStorage.getItem('ShopItems');
     if (currentUser) {
-      const shopData = {
-        id: JSON.stringify((JSON.parse(userData)).uniqid),
-        shopId: shopId,
-        shopName: shopName, 
-        items: JSON.stringify(selectedValue)
+      if (!shopName || shopName.length === 0) {
+        console.log("no save");
+        return
+      } else {
+        
+        let shopData = {
+          id: JSON.stringify((JSON.parse(userData)).uniqid),
+          shopId: shopId,
+          shopName: shopName,
+          items: items
+        }
+        await axios.put("/update/shops", { shopData }, { headers: authHeader() });
+        console.log("items Saved");
+        deleteButton.classList.remove('deleteButton');
+        publishButton.classList.remove('publishButton');
+        setTimeout(() => {
+          fetchShops();
+          shopButtons();
+        }, "1000");
+        return
       }
-      axios.put("/update/shops" , { shopData }, { headers: authHeader() });
-      console.log("items Saved");
     } else {
       alert("Please create an account to save your Shop!");
       window.location.replace("/register");
@@ -112,83 +128,75 @@ useEffect(() => {
     
   };
 
-  const saveButton = () => {
-    const publishButton = document.querySelector('#publish');
-    const deleteButton = document.querySelector('#delete');
+
+  function updateShopName() {
     saveShopItems();
-    if (currentUser) { 
-  deleteButton.classList.remove('deleteButton');
-  publishButton.classList.remove('publishButton');
-    setTimeout(() => {
-      fetchShops();
-      shopButtons();
-   
-    }, "2000");
-    alert(" Shop Saved ");
-    } else {
-      return
-  };
-    };
+    alert("Shop Name Updated");
+  }
 
 
-//display function to put selected items on page____________________
+
+
+
+
+  //display function to put selected items on page____________________
 
   const getDisplay = () => {
     if (!selectedValue || selectedValue.length === 0) {
-        return 
+      return
     }
     if (isMulti) {
       return (
-          <div className='itemsContainer'>
+        <div className='itemsContainer'>
               
           {(selectedValue).map((option) => (
             
             <div key={option.id} className='items'>
-                <span >
-                      <h1><Link className='itemNames' to={`/shop${option.url}`}>{option.value}</Link> </h1>
+              <span >
+                <h1><Link className='itemNames' to={`/shop${option.url}`}>{option.value}</Link> </h1>
                       
-                              <span key={option.id} className="itemCost">
-                                  <input className="cost" data-id={option.id} value={option.cost} onChange={handleCostChange} type="text" maxLength='6' id="cost"  name="cost" />
-                                  <div className="cost-dropdown">
-                                      <div data-id={option.id} className="cost-select">
-                                          <span  className="cost-selected">{option.coinType}</span>
-                                          <div className="cost-caret"></div>
-                                      </div>
-                                      <ul className="cost-menu">
-                                          <li data-id={option.id} className="cost-active">GP</li>
-                                          <li data-id={option.id} >PP</li>
-                                          <li data-id={option.id} >EP</li>
-                                          <li data-id={option.id} >SP</li>
-                                          <li data-id={option.id} >CP</li>
-                                      </ul>
-                                  </div>
-                              </span>
-                               <div className="itemQuantity">
-                                  <p className="quantity">Quantity</p>
-                                  <input  data-id={option.id} value={option.quantity} onChange={handleQuantityChange} type="number" id="quantity" />
-                              </div>
+                <span key={option.id} className="itemCost">
+                  <input className="cost" data-id={option.id} value={option.cost} onChange={handleCostChange} type="text" maxLength='6' id="cost" name="cost" />
+                  <div className="cost-dropdown">
+                    <div data-id={option.id} className="cost-select">
+                      <span className="cost-selected">{option.coinType}</span>
+                      <div className="cost-caret"></div>
+                    </div>
+                    <ul className="cost-menu">
+                      <li data-id={option.id} className="cost-active" onChange={saveShopItems} >gp</li>
+                      <li data-id={option.id} >pp</li>
+                      <li data-id={option.id} >ep</li>
+                      <li data-id={option.id} >sp</li>
+                      <li data-id={option.id} >cp</li>
+                    </ul>
+                  </div>
                 </span>
-                  <span
+                <div className="itemQuantity">
+                  <p className="quantity">Quantity</p>
+                  <input data-id={option.id} value={option.quantity} onChange={handleQuantityChange} type="number" id="quantity" />
+                </div>
+              </span>
+              <span
                 onClick={(e) => onTagRemove(e, option)}
                 className="dropdown-tag-close"
-                >
-                <CloseIcon/>
-                </span>
-              </div>
+              >
+                <CloseIcon />
+              </span>
+            </div>
           ))}
             
         </div>
       );
     }
     
-        return selectedValue.label;
+    return selectedValue.label;
   };
 
 
-//Cost value recomendation-------------------------------------//
+  //Cost value recomendation-------------------------------------//
   
 
-//---QUANTITY VALUE HANDLER---------------------------------------------------------------
+  //---QUANTITY VALUE HANDLER---------------------------------------------------------------
   const handleQuantityChange = (event) => {
     const id = String(event.target.dataset.id);
     const val = String(event.target.value);
@@ -209,11 +217,11 @@ useEffect(() => {
     updateQuanity();
     updateItems();
     setSelectedValue(JSON.parse(window.localStorage.getItem('ShopItems')));
-
+    saveShopItems();
     return;
   };
-// COST VALUE HANDLER____________________________________________-
-   const handleCostChange = (event) => {
+  // COST VALUE HANDLER____________________________________________-
+  const handleCostChange = (event) => {
     const id = String(event.target.dataset.id);
     const val = String(event.target.value);
     const items = JSON.parse(window.localStorage.getItem('ShopItems'));
@@ -228,16 +236,16 @@ useEffect(() => {
     function updateCost() {
       delete match.cost;
       match.cost = val;
-      return;  
+      return;
     }
     
       
-      updateCost()
-      updateItems();
-      setSelectedValue(JSON.parse(window.localStorage.getItem('ShopItems')));
-    
-     return;
-   };
+    updateCost()
+    updateItems();
+    setSelectedValue(JSON.parse(window.localStorage.getItem('ShopItems')));
+    saveShopItems();
+    return;
+  };
   
   
   // COIN TYPE DROPDOWN__________________________________________________
@@ -272,19 +280,18 @@ useEffect(() => {
                 const val = selected.innerText;
                 
                 function updateItems() {
-                window.localStorage.setItem('ShopItems', JSON.stringify(items));
+                  window.localStorage.setItem('ShopItems', JSON.stringify(items));
                 };
        
 
                 function updateCoinType() {
                     delete match.coinType;
-                    match.coinType = selected.innerText;
-            
+                    match.coinType = selected.innerText;                
                 };
                 if (match && val) {
                     updateCoinType()
                     updateItems();
-                    setSelectedValue(JSON.parse(window.localStorage.getItem('ShopItems')));
+                  setSelectedValue(JSON.parse(window.localStorage.getItem('ShopItems')));
                 }
 
                 select.classList.remove('cost-select-clicked');
@@ -296,6 +303,7 @@ useEffect(() => {
                 });
 
               option.classList.add('cost-active');
+
               return;
             });
         });
@@ -332,7 +340,8 @@ if (!currentUser) {
 
     setShopId(uniqid());
     setSelectedValue([]);
-    setShopName("Enter Shop Name Here");
+    setShopName();
+    saveShopItems();
     }
     
   };
@@ -345,15 +354,16 @@ const fetchShops = async () => {
         const response = await axios.get('/api/fetch/' + id );        
         const fetchedShops = await (response.data[0]).shops;
         setShops(fetchedShops);
-};
+  };
 
     const shopItemsClicked = event => {
-      let value = event.target.value;
+      let items = event.target.dataset.items;
       let id = event.target.dataset.id;
       let name = String(event.target.dataset.name);
       setShopName(name);
       setShopId(id);
-      setSelectedValue(JSON.parse(value));
+      setSelectedValue(JSON.parse(items));
+
       const shopNameTitle = document.querySelector('#shopTitle');
       const deleteButton = document.querySelector('#delete');
       const shopNameTitleText = document.querySelector('#shopTitleText');
@@ -371,14 +381,14 @@ const fetchShops = async () => {
 
     };
   
-    const shopButtons = () => {
+  const shopButtons = () => {
         if (shops.length > 0) {
             return (
-                <div>
+                <div className="shopsDropdownContainer">
                     {(shops).map((shop) => (
-                        <button className="buttons" data-name={shop.shopName} data-id={shop.shopId} value={shop.items} onClick={shopItemsClicked} >
+                        <div className="myShop" data-name={shop.shopName} data-id={shop.shopId} data-items={shop.items} onClick={shopItemsClicked} >
                         {shop.shopName}
-                      </button>
+                      </div>
                     ))}
 
                 </div>
@@ -423,10 +433,11 @@ const fetchShops = async () => {
 //____________Publish Button________________________________________
   const publishButton = () => {
     if (currentUser) {
-
       return (
-        <div><Link id="publish" onClick={() => {
-          saveShopItems(); alert("Going to your published shop now!")
+        <div className="publishContainer"><Link id="publish" onClick={() => {
+
+          saveShopItems();
+
         }} className="publishButton buttons" to={`/shop/${JSON.parse(userData).uniqid}/${shopId}/${shopName}`}>Publish Shop</Link> </div>
       )
     } else {
@@ -445,21 +456,58 @@ const fetchShops = async () => {
     const newValue = removeOption(option);
     setSelectedValue(newValue);
     onChange(newValue);
+    setTimeout(() => {
+      saveShopItems();
+    }, "1000");
   };
 
-  const onItemClick = (option) => {
+  const onItemClick = async (option) => {
     let newValue;
+    const url = option.url;
+    const urlSplit = url.split('/');
+    const itemType = (urlSplit[2]);
+
     if (isMulti) {
       if (selectedValue.findIndex((o) => o.value === option.value) >= 0) {
         newValue = removeOption(option);
       } else {
-        newValue = [...selectedValue, option];
+        if (itemType === "equipment") {
+      const item = await fetch(
+             `https://www.dnd5eapi.co${url}`
+    );
+    const itemData = await item.json();
+    const cost = await itemData.cost;
+    const price = cost.quantity;
+    const coinType = cost.unit;
+    option.cost = price;
+    option.coinType = coinType;
+    } else {
+      option.cost = 0;
+    }
+        newValue = [...selectedValue, option]; 
       }
     } else {
+      if (itemType === "equipment") {
+      const item = await fetch(
+             `https://www.dnd5eapi.co${url}`
+    );
+    const itemData = await item.json();
+    const cost = await itemData.cost;
+    const price = cost.quantity;
+    const coinType = cost.unit;
+    option.cost = price;
+    option.coinType = coinType;
+    } else {
+      option.cost = 0;
+    }
       newValue = option;
     }
     setSelectedValue(newValue);
     onChange(newValue);
+    setTimeout(() => {
+      saveShopItems();
+    }, "1000");
+    
   };
 
   const isSelected = (option) => {
@@ -499,13 +547,22 @@ const fetchShops = async () => {
 
   
   return (
-    <div>
-       <h1 className='title'>Shop Creator</h1>
-      {shopButtons()}
+    <div className="shopPageContainer">
+      <div className="myShops">
+        <h3 className="myShopsTitle" >My Shops</h3>
+        <div className="shops-dropdown">
+          <div>=</div>
+          {shopButtons()}
+          <div className="buttons" onClick={() => newShop()} >New Shop</div>
+        </div>
+      </div>
+      
       <div id="shopTitle" className="shopTitle"> 
         {currentShop()}
         <input id="shopTitleText" className="shopTitleText" value={shopName} onChange={getShopName} minLength="1" type="text" />
         <button id="delete" className="deleteButton buttons" onClick={() => deleteButton()}>Delete Shop</button>
+        <button id="save" className="buttons saveButton" onClick={() => updateShopName()} >Update Name</button>
+        {publishButton()}
       </div>
       <div id="itemsDropdown" className="dropdown-container itemsDropdown">
       <div ref={inputRef} onClick={handleInputClick} className="dropdown-input">
@@ -535,12 +592,7 @@ const fetchShops = async () => {
         </div>
       )}
       </div>
-      
-      
-      <div>{getDisplay()}</div>
-      <button id="save" className="buttons saveButton" onClick={() => saveButton()} >Save shop</button>
-      <button className="buttons" onClick={() => newShop()} >New Shop</button>
-      {publishButton()}
+      {getDisplay()}
     </div>
   );
 };

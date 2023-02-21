@@ -11,25 +11,31 @@ const res = require("express/lib/response");
 
 exports.saveShopItems = async (req, res) => {
  
-  let userId = JSON.parse(req.body.shopData.id);
-  let userShopId = req.body.shopData.shopId;
-  let upItems = req.body.shopData.items;
-  let upShopName = req.body.shopData.shopName;
+  let userId = await JSON.parse(req.body.shopData.id);
+  let userShopId = await req.body.shopData.shopId;
+  let upItems = await req.body.shopData.items;
+  let upShopName = await req.body.shopData.shopName;
   let hasShop = await User.countDocuments({ id: userId, "shops.shopId": userShopId });
   const filter = { id: userId, "shops.shopId": userShopId };
 
   if (hasShop > 0) {
-    await User.updateOne(
-       filter ,
-      {
-        $set: {
+    try {
+      await User.updateOne(
+        filter,
+        {
+          $set: {
             "shops.$.shopName": upShopName,
             "shops.$.items": upItems
           
+          }
         }
-      }, { new: true }
-    );
+      );
+      res.status(200).send({ message: "shop updated" });
+    } catch (err) {
+    console.error(err);
+  }
   } else {
+    try{
     await User.updateOne(
       { id: userId },
       {
@@ -43,6 +49,10 @@ exports.saveShopItems = async (req, res) => {
         }
       }
     );
+      res.status(200).send({ message: "shop made" });
+    } catch (err) {
+    console.error(err);
+  }
 
   } 
   

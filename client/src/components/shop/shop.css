@@ -1,0 +1,538 @@
+
+.shopPageContainer {
+    background: none;
+}
+
+
+/*---------------------ITEM ORGANIZATION STYLES -----------------------------*/
+.itemsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-inline: 2rem;
+    grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 5%;
+    margin-top: 1%;
+}
+
+.items,
+.container {
+    border: 2px solid black;
+    padding: 5%;
+    display: grid;
+    grid-template-rows: repeat(1);
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(222, 156, 69, 0.93);
+}
+
+.items {
+    position: relative;
+    border-radius: 10px;
+}
+
+
+.itemNames {
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.itemNames:hover {
+    text-decoration: none;
+    color: rgb(66, 64, 64);
+}
+
+.title {
+    color: white;
+    border: solid black;
+    padding: 2%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(121, 65, 9, 1) 52%, rgba(0, 0, 0, 1) 100%);
+    font-size: 5vh;
+}
+
+.text {
+    font-size: 2rem;
+    border: 2px solid black;
+    background-color: rgba(222, 156, 69, 0.789);
+}
+
+.itemType {
+    align-items: center;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+.itemDescContainer {
+    background-color: rgba(222, 156, 69, 0.789);
+}
+
+.itemDesc {
+    font-size: 2rem;
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+    padding: 5vw;
+}
+
+
+
+.icon {
+    display: flex;
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    background: red;
+    border: 2px solid black;
+    border-radius: 5px;
+
+}
+
+.itemCost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    bottom: 0px;
+}
+
+
+.cost {
+    background: rgb(102, 34, 34);
+    color: rgb(214, 218, 143);
+    border-radius: 20px;
+    max-width: 5rem;
+    height: 4rem;
+    font-size: 1.25rem;
+}
+
+/* Drop down menu_______________________________________________ */
+
+.dropdown-container {
+    text-align: left;
+    border: 1px solid #ccc;
+    position: relative;
+    color: white;
+    border: 2px solid black;
+    background-color: rgb(15, 14, 13);
+
+}
+
+.dropdown-input {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.dropdown-menu-main {
+    position: absolute;
+    transform: translateY(4px);
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: auto;
+    max-height: 300px;
+    background-color: rgb(255, 170, 0);
+    z-index: 99;
+}
+
+.dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: rgb(153, 38, 38);
+}
+
+.dropdown-item.selected {
+    background-color: #000000;
+    color: #fff;
+}
+
+.dropdown-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.dropdown-tag-item {
+    background-color: rgb(255, 255, 255);
+    padding: 2px 4px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-tag-close {
+    display: flex;
+    align-items: center;
+}
+
+.search-box {
+    padding: 5px;
+    background-color: rgb(255, 170, 0);
+}
+
+.search-box input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgb(255, 250, 244);
+}
+
+
+
+
+/* COST DROPDOWN MENU___________________________________________*/
+
+.cost-dropdown {
+    max-width: 4rem;
+    border-radius: 40px;
+    position: relative;
+    align-items: center;
+}
+
+.cost-dropdown * {
+    box-sizing: border-box;
+}
+
+.cost-select {
+    background: #2a2f3b;
+    color: #ffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    border-radius: .5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.cost-selected {
+    display: block;
+    width: fit-content;
+
+
+}
+
+/*
+Clicked styles
+added later in JS
+*/
+.itemsDropdown,
+.saveButton,
+.publishButton,
+.deleteButton,
+.shopTitle,
+.shopTitleText {
+    display: none;
+}
+
+
+.shopTitle-active {
+    width: 90%;
+    margin: auto;
+    padding: 1%;
+    background-image: url("../../../src/img/wood_board.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    border-radius: 10px;
+    border: solid black 5px;
+}
+
+.shopTitleText-active {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    text-decoration: underline;
+    font-size: 10vh;
+    text-align: center;
+    padding: 2%;
+    background-color: tan;
+    border-radius: 10px;
+}
+
+.cost-select-clicked {
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8em #26489a;
+}
+
+.cost-select:hover {
+    background: #323741;
+}
+
+.cost-caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #ffff;
+    transition: 0.3s;
+}
+
+.cost-caret-rotate {
+    transform: rotate(180deg);
+}
+
+.cost-menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+.cost-menu li {
+    padding: 0.7em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.cost-menu li:hover {
+    background: #2a2d35;
+}
+
+.cost-active {
+    background: #23242a;
+}
+
+.cost-menu-open {
+    display: block;
+    opacity: 1;
+}
+
+
+/* QUANTITY ------------------------------- */
+
+.itemQuantity {
+    display: grid;
+    background-color: #d3872a;
+    border: black solid 2px;
+    border-radius: 5px;
+    align-items: center;
+    padding: auto;
+    margin: 10px;
+    ;
+    position: relative;
+}
+
+#quantity {
+    margin: 2%;
+}
+
+.quantity {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+
+/*PUBLISHED ITEMS ------------------------------------------------ */
+
+.itemsContainer-published {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding-inline: 2rem;
+    grid-auto-rows: minmax(100px, auto);
+    margin-bottom: 5%;
+    margin-top: 1%;
+
+}
+
+.item-container-published {
+    background-image: url(../../../src/img/wooden-board-h.jpeg);
+    border: 2px solid black;
+    padding: 5%;
+    display: grid;
+    grid-template-rows: repeat(1);
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.item-published {
+    background-image: url(../../../src/img/shutterstock_79257886.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.itemNames-published {
+    display: flex;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.itemCost-published {
+    display: flex;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+}
+
+.cost-published {
+    font-size: 2rem;
+
+}
+
+.cointType-published {
+    font-size: 1rem;
+}
+
+.itemQuantity-published {
+    display: grid;
+    align-items: center;
+    padding: 5%;
+    margin: 5%;
+    font-size: 2rem;
+}
+
+.publishContainer {
+    padding-bottom: 2%;
+}
+
+
+/* MY SHOPS -------------------------------------------- */
+.myShops {
+    background: rgb(255, 255, 255);
+    border-bottom: black solid 2px;
+}
+
+.myShop {
+    color: black;
+    cursor: pointer;
+    padding: .5rem;
+    height: auto;
+
+}
+
+.myShopsTitle {
+    background-color: black;
+    color: white;
+}
+.shopsDropdownContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+.shops-dropdown {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+    padding: 0;
+    height: 1.5rem;
+    overflow: hidden;
+    color: black;
+    box-sizing: border-box;
+}
+
+.shops-dropdown:hover,
+.shops-dropdown:focus-within {
+    height: auto;
+    transition: 1s ease;
+}
+
+@media (max-width:880px) {
+    .itemsContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 2px;
+        margin-top: 2px;
+        padding: 5%;
+        grid-auto-rows: minmax(100px, auto);
+
+    }
+}
+
+@media (max-width: 675px) {
+    .itemsContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-bottom: 2px;
+        margin-top: 2px;
+        padding: 5%;
+        grid-auto-rows: minmax(100px, auto);
+
+    }
+}
+
+@media (max-width: 480px) {
+
+    .itemsContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-bottom: 2px;
+            margin-top: 2px;
+            padding: 5%;
+            grid-auto-rows: minmax(100px, auto);
+    
+        }
+    
+        .items {
+            padding: 5px;
+        }
+    
+        .itemQuantity {
+            display: grid;
+            background-color: #d3872a;
+            border: black solid 2px;
+            border-radius: 5px;
+            align-items: center;
+            padding: auto;
+            margin: 10px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+    }
+
+        @media (max-width: 473px) {
+            .itemsContainer {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                margin-bottom: 2px;
+                margin-top: 2px;
+                padding: 5%;
+                grid-auto-rows: minmax(100px, auto);
+    
+            }
+
+             .shopTitleText-active {
+                font-size: 5vh;
+            }
+        }

@@ -1,8 +1,9 @@
 import { Component } from "react"
-import AuthService from "../services/auth.service";
+import AuthService from "../../services/auth.service";
 import { Link } from "react-router-dom";
-import "../App.css";
-import EventBus from "../common/EventBus";
+import "../../App.css";
+import "./navbar.css";
+import EventBus from "../../common/EventBus";
 
 class NavBar extends Component {
 constructor(props) {

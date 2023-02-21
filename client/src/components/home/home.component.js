@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import UserService from "../services/user.service";
-import Carousel from "./img-slider/img-slider.components";
+import UserService from "../../services/user.service";
+import Carousel from "../img-slider/img-slider.components";
 import { Link } from 'react-router-dom';
-import "../App.css";
+import "../../App.css";
+import "./home.css";
 
-import balor from "../img/balor.jpeg";
-import gametable from "../img/gametable.jpeg";
-import dm from "../img/DM.jpeg";
-import skullManor from "../img/skull-manor.jpeg";
-import waterBattle from "../img/water-battle.jpeg";
-import dawn from "../img/desolation_of_dawn.png";
+import balor from "../../img/balor.jpeg";
+import gametable from "../../img/gametable.jpeg";
+import dm from "../../img/DM.jpeg";
+import skullManor from "../../img/skull-manor.jpeg";
+import waterBattle from "../../img/water-battle.jpeg";
+import dawn from "../../img/desolation_of_dawn.png";
 
 export default class Home extends Component {
   constructor(props) {

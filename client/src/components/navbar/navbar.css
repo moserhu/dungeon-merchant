@@ -1,0 +1,53 @@
+/* NAVBAR------------------------------------------------------------------------*/
+nav {
+    background-color: #000000;
+    display: flex;
+    list-style: none;
+    border-bottom: solid white 1px;
+
+}
+
+.nav-link:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.navbar-brand:visited {
+    text-decoration: none;
+    color: rgb(255, 153, 0);
+    ;
+}
+
+.nav-link:hover {
+    color: rgb(185, 185, 185)
+}
+
+.navbar-brand {
+    margin-left: 5%;
+    color: rgb(255, 153, 0);
+}
+
+.navbar-brand:hover {
+    color: rgb(255, 153, 0);
+}
+
+.navbar-right {
+    display: flex
+}
+
+.navbar-left {
+    display: flex;
+    margin-right: 3%;
+
+}
+
+.nav-item {
+    display: block;
+    margin-left: 1rem;
+}
+
+.nav-link {
+    color: white;
+    display: flex;
+
+}

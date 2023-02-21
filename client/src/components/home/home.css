@@ -1,0 +1,186 @@
+/* HOME PAGE__________________________________________________________*/
+.homeContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(121, 65, 9, 1) 52%, rgba(0, 0, 0, 1) 100%);
+}
+
+.contentContainer {
+    padding-bottom: 60px;
+    color: rgb(0, 0, 0);
+    margin-top: 1%;
+    padding: 3%;
+    font-size: 32px;
+}
+
+.adContainer {
+    display: flex;
+    background-color: rgb(223, 214, 203);
+    padding: 1%;
+    align-items: center;
+    border: #23242a solid 5px;
+    margin-top: 2%;
+    position: relative;
+}
+
+.adLink {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.adImage {
+    border: black solid 2px;
+    object-fit: cover;
+}
+
+.adText {
+    width: 100%;
+    left: 0;
+    top: 15%;
+}
+
+
+.homeHeader {
+    background: #d3872a;
+    color: rgb(0, 0, 0);
+    margin-top: 1%;
+    padding: 3%;
+    font-size: 32px;
+    border-radius: 30px;
+    border: solid black 2px;
+}
+
+.homeIntro {
+    font-size: 70%;
+    background: #d3872a;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    left: 0px;
+    border-radius: 15px;
+    padding: 2%;
+    border: solid black 2px;
+}
+
+/* Image Slider-----------------------------------------------------------------*/
+.imgSliderContainer {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background: #a66f2c;
+    border: black solid 2px;
+    ;
+    border-radius: 10px;
+    ;
+}
+
+.sliderText {
+    text-decoration: none;
+    color: rgb(125, 122, 122);
+    background: #000000;
+    border-radius: 30px;
+}
+
+.sliderTextContainer {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* MEDIA QUERIES------------------------------------------------------------------------- */
+@media (max-width: 1075px) {
+    .sliderTextContainer {
+        text-decoration: none;
+        color: black;
+        position: relative;
+
+    }
+
+    .sliderText {
+
+        border-radius: 0px;
+        text-align: center;
+
+        font-size: min(max(30px, 4vw), 15px);
+
+    }
+
+    footer {
+        font-size: smaller;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+
+    .navbar-right {
+        margin-right: 20px;
+    }
+
+    .sliderText {
+        border-radius: 0px;
+        text-align: center;
+        width: auto;
+
+    }
+
+    .sliderTextContainer {
+        text-decoration: none;
+        color: black;
+        font-size: small;
+    }
+
+    footer {
+        font-size: small;
+    }
+
+    .homeHeader {
+        font-size: small;
+    }
+
+    .homeIntro {
+        font-size: small;
+    }
+
+    .mainTitleContainer {
+        margin-bottom: 10px;
+    }
+
+    .adContainer {
+        font-size: small;
+    }
+
+    .buttons {
+        font-size: 20px;
+    }
+
+}
+
+
+
+
+@media (max-width: 473px) {
+    .sliderTextContainer {
+        display: none;
+        text-decoration: none;
+        color: black;
+        font-size: small;
+    }
+}
+
+@media (max-width: 473px) {
+
+    .navbar {
+        display: flex;
+        justify-content: space-around;
+    }
+
+
+}
