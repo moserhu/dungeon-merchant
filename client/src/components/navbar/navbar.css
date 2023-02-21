@@ -5,7 +5,70 @@ nav {
     list-style: none;
     border-bottom: solid white 1px;
 
+    overflow: hidden;
+    position: relative;
 }
+
+ #nav-links {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+}
+
+
+ .nav-item {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    
+}
+
+#hamburger {
+    display: block;
+}
+
+.hamburgerContainer {
+    background: black;
+    position: absolute;
+    right: 0;
+    top: -1;
+}
+
+.hamburgerContainer {
+    cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+    opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+
+}
+
+
+
 
 .nav-link:visited {
     text-decoration: none;
@@ -32,11 +95,14 @@ nav {
 }
 
 .navbar-right {
-    display: flex
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .navbar-left {
     display: flex;
+    flex-direction: row;
     margin-right: 3%;
 
 }
@@ -51,3 +117,4 @@ nav {
     display: flex;
 
 }
+
