@@ -1,28 +1,88 @@
 /* HOME PAGE__________________________________________________________*/
+#root {
+    --black: #141414;
+    --yellow: #EEC643;
+    --white: #EEF0F2;
+    --blue: #0D21A1;
+    --darkBlue: #011638;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+   background-image: url(../../img/modernshop.jpeg);
+   background-position: center;
+   background-size: cover;
+}
+
 .homeContainer {
     padding-left: 5%;
     padding-right: 5%;
     display: flex;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(121, 65, 9, 1) 52%, rgba(0, 0, 0, 1) 100%);
 }
 
 .contentContainer {
     padding-bottom: 60px;
-    color: rgb(0, 0, 0);
+    color: var(--black);
     margin-top: 1%;
     padding: 3%;
     font-size: 32px;
 }
 
+.homeSkillsContainer{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 20rem;
+}
+
+.homeSkill{
+    position: relative;
+    display: flex;
+    color: var(--white);
+    justify-content: center;
+    align-items: center;
+    background-color: var(--darkBlue);
+    border-radius: 20px;
+    width: 15rem;
+    height: 15rem;
+    border: solid var(--yellow) 1px;
+    box-shadow: 10px 5px 5px var(--yellow);
+}
+
+.homeSkillIcon{
+    position: absolute;
+    top: -20%;
+    left: 35%;
+    border-radius: 100px;
+    background-color: var(--white);
+    width: 5rem;
+    height: 5rem;
+    border: solid var(--yellow) 1px;
+}
+
+.skillIcon {
+    position: absolute;
+    color: var(--yellow);
+    left: 30%;
+    bottom: 30%;
+}
+
+
+
 .adContainer {
     display: flex;
-    background-color: rgb(223, 214, 203);
+    background-color: var(--darkBlue);
     padding: 1%;
     align-items: center;
-    border: #23242a solid 5px;
-    margin-top: 2%;
+    border: var(--black) solid 5px;
+    margin-top: 10%;
+    margin-bottom: 10%;
     position: relative;
+    box-shadow: 10px 5px 5px var(--yellow);
 }
 
 .adLink {
@@ -31,84 +91,145 @@
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 1;
 }
 
 .adImage {
-    border: black solid 2px;
-    object-fit: cover;
+    border: var(--black) solid 2px;
+    object-fit: cover; 
 }
 
 .adText {
+    color: var(--white);
     width: 100%;
     left: 0;
     top: 15%;
 }
 
 
-.homeHeader {
-    background: #d3872a;
-    color: rgb(0, 0, 0);
-    margin-top: 1%;
+.homeMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2%;
+    color: var(--black);
     padding: 3%;
     font-size: 32px;
-    border-radius: 30px;
-    border: solid black 2px;
 }
 
+.homeMainItemContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(../../img/wooden-board-h.jpeg);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 10px 5px 5px var(--yellow);
+}
+
+a {
+    text-decoration: none;
+}
+
+.homeMainItem {
+    background-image: url(../../img/shutterstock_79257886.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 15rem;
+    height: 5rem;
+    padding: 1%;
+    color: var(--black);
+    text-decoration: none;
+}
+
+.smallText {
+    font-size: smaller;
+}
+
+
 .homeIntro {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
     font-size: 70%;
-    background: #d3872a;
-    margin-top: 1%;
-    margin-bottom: 2%;
+    background: var(--darkBlue);
+    color: var(--white);
+    margin-top: 10%;
+    margin-bottom: 10%;
     left: 0px;
     border-radius: 15px;
-    padding: 2%;
-    border: solid black 2px;
+    padding: 5%;
+    border: solid var(--black) 2px;
+    box-shadow: 10px -20px 5px var(--yellow);
+
+}
+
+.pageDivider1 {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    height: 125vh;
+    width: 100%;
+    background-color: var(--black);
+    clip-path: polygon(0 50%, 100% 0, 100% calc(100% - 7vw), 0% 100%); 
+}
+
+.pageDivider2 {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--black);
+    clip-path: polygon(0 50%, 100% 0, 100% calc(100% - 7vw), 0% 0);
+}
+
+.pageDivider3 {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    height: 75vh;
+    width: 100%;
+    background-color: var(--black);
+    clip-path: polygon(0 50%, 100% 0, 100% calc(100% - 7vw), 0% 100%);
 }
 
 /* Image Slider-----------------------------------------------------------------*/
 .imgSliderContainer {
     margin-top: 5%;
-    margin-bottom: 5%;
-    background: #a66f2c;
-    border: black solid 2px;
-    ;
+    margin-bottom: 10%;
+    background: var(--darkBlue);
+    border: var(--black) solid 2px;
     border-radius: 10px;
-    ;
-}
-
-.sliderText {
-    text-decoration: none;
-    color: rgb(125, 122, 122);
-    background: #000000;
-    border-radius: 30px;
-}
-
-.sliderTextContainer {
-    display: flex;
-    text-decoration: none;
-    color: black;
-    justify-content: space-around;
-    align-items: center;
+    box-shadow: 10px 5px 5px var(--yellow);
 }
 
 /* MEDIA QUERIES------------------------------------------------------------------------- */
 @media (max-width: 1075px) {
-    .sliderTextContainer {
-        text-decoration: none;
-        color: black;
-        position: relative;
-
+    .homeSkill {
+        width: 10rem;
+        height: 10rem;
+        font-size: smaller;
     }
 
-    .sliderText {
+    .homeSkillIcon {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+     .skillIcon {
+        width: 1.5rem;
+        height: 1.5rem;
+        left: 25%;
+        bottom: 30%;
+    }
 
-        border-radius: 0px;
-        text-align: center;
-
-        font-size: min(max(30px, 4vw), 15px);
-
+    .homeSkillsContainer {
+        height: 15rem;
     }
 
     footer {
@@ -116,6 +237,44 @@
     }
 }
 
+@media (max-width: 650px) {
+    .homeMain {
+        flex-direction: row;
+        
+    }
+    .homeMainItemContainer{
+        margin-top: 0;
+        font-size: small;
+    }
+    .homeMainItem {
+    width: 5rem;
+    height: 2rem;
+    }
+
+    .homeSkillsContainer {
+        height: 10rem;
+    }
+    
+    .homeSkill {
+        width: 6rem;
+        height: 6rem;
+        font-size: small;
+    }
+
+    .homeSkillIcon {
+        width: 2.5rem;
+        height: 2.5rem;
+        top: -20%;
+            left: 35%;
+    }
+    
+     .skillIcon {
+        width: 1rem;
+        height: 1rem;
+        left: 25%;
+        bottom: 30%;
+    }
+}
 
 
 @media (max-width: 480px) {
@@ -129,12 +288,6 @@
         text-align: center;
         width: auto;
 
-    }
-
-    .sliderTextContainer {
-        text-decoration: none;
-        color: black;
-        font-size: small;
     }
 
     footer {
@@ -164,17 +317,6 @@
 }
 
 
-
-
-@media (max-width: 473px) {
-    .sliderTextContainer {
-        display: none;
-        text-decoration: none;
-        color: black;
-        font-size: small;
-    }
-}
-
 @media (max-width: 473px) {
 
     .navbar {
@@ -183,4 +325,26 @@
     }
 
 
+}
+
+@media (max-width: 330px) {
+
+
+
+    .homeSkill {
+            width: 5rem;
+            height: 5rem;
+            font-size: 10px;
+        }
+
+    .homeSkillIcon {
+            width: 2rem;
+            height: 2rem;
+        }
+      
+    .skillIcon {
+        width: .9rem;
+        height: .9rem;
+    }
+    
 }

@@ -1,7 +1,14 @@
-
+#root {
+    --black: #141414;
+    --yellow: #EEC643;
+    --white: #EEF0F2;
+    --blue: #0D21A1;
+    --darkBlue: #011638;
+}
 
 .priceCheckContainer {
     margin-top: 10vh;
+    color: var(--white);
 }
 
 .priceCheckTitle {
@@ -14,20 +21,20 @@ background-image: url("../../img/wood_board.jpg");
 background-attachment: fixed;
 background-size: cover;
 justify-content: center;
-border: black solid 2px;
+border: var(--yellow) solid 2px;
 }
 
 .priceWrapper {
-    background: tan;
+    background: var(--yellow);
     margin: 1rem;
     border-radius: 5px;
-    border: rgba(209, 202, 202, 0.775) solid 2px;
+    border: var(--darkBlue) solid 2px;
 }
 
 
 .costTitle{
 font-size: 5vh;
-color: rgb(6, 5, 3);
+color: var(--white);
 text-decoration: underline;
 
 }

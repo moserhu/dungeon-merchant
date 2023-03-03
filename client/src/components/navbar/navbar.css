@@ -1,10 +1,17 @@
 /* NAVBAR------------------------------------------------------------------------*/
+#root {
+    --black: #141414;
+    --yellow: #EEC643;
+    --white: #EEF0F2;
+    --blue: #0D21A1;
+    --darkBlue: #011638;
+}
+
 nav {
-    background-color: #000000;
+    background-color: var(--darkBlue);
     display: flex;
     list-style: none;
-    border-bottom: solid white 1px;
-
+    border-bottom: solid var(--white) 1px;
     overflow: hidden;
     position: relative;
 }
@@ -19,7 +26,7 @@ nav {
 
 
  .nav-item {
-    color: white;
+    color: var(--white);
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
@@ -31,7 +38,7 @@ nav {
 }
 
 .hamburgerContainer {
-    background: black;
+    background: var(--yellow);
     position: absolute;
     right: 0;
     top: -1;
@@ -46,7 +53,7 @@ nav {
 .bar3 {
     width: 35px;
     height: 5px;
-    background-color: #333;
+    background-color: var(--white);
     margin: 6px 0;
     transition: 0.4s;
 }
@@ -67,31 +74,27 @@ nav {
 
 }
 
-
-
-
 .nav-link:visited {
     text-decoration: none;
-    color: white;
+    color: var(--white);
 }
 
 .navbar-brand:visited {
     text-decoration: none;
-    color: rgb(255, 153, 0);
-    ;
+    color: var(--yellow);
 }
 
 .nav-link:hover {
-    color: rgb(185, 185, 185)
+    color: var(--yellow);
 }
 
 .navbar-brand {
     margin-left: 5%;
-    color: rgb(255, 153, 0);
+    color: var(--yellow);
 }
 
 .navbar-brand:hover {
-    color: rgb(255, 153, 0);
+    color: var(--white);
 }
 
 .navbar-right {
@@ -113,8 +116,19 @@ nav {
 }
 
 .nav-link {
-    color: white;
+    color: var(--white);
     display: flex;
 
 }
 
+@media (max-width: 330px) {
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 20px;
+    height: 5px;
+    margin: 6px 0;
+}
+
+}

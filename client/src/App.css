@@ -2,6 +2,11 @@
 #root {
   width: 100%;
   height: 100%;
+  --black: #141414;
+  --yellow: #EEC643;
+  --white: #EEF0F2;
+  --blue: #0D21A1;
+  --darkBlue: #011638;
 }
 
 * {
@@ -35,10 +40,10 @@ body {
 
 .buttons{
   margin-bottom: 2px;
-  border: orange solid 2px;
+  border: var(--black) solid 2px;
   border-radius: 5px;
-  background-color: black;
-  color: orange;
+  background-color: var(--yellow);
+  color: var(--darkBlue);
   padding: 3px;
   margin-left: 2px;
   margin-right: 2px;
@@ -46,7 +51,7 @@ body {
 
 .buttons:hover{
   text-decoration: none;
-  color: grey;
+  color: var(--blue);
 }
 
 footer {
@@ -56,12 +61,13 @@ footer {
   height: 100px; 
   display: flex;
   /* Height of the footer */
-  background-color: rgb(200, 129, 37);
+  background-color: var(--darkBlue);
+  color: var(--yellow);
   justify-content: space-around;
   align-items: center;
   font-size: 1.5rem;
   font-weight:bold;
-  border-top: black solid 2px;
+  border-top: var(--black) solid 2px;
 }
 
 .supportText {
@@ -76,13 +82,13 @@ footer {
   background-size: cover;
   margin-bottom: 50px;
   border-radius: 10px;
-  border: solid black 2px;
+  border: solid var(--black) 2px;
 
 }
 
 .mainTitle {
   padding: 2%;
- background-color: tan;
+ background-color: var(--yellow);
  border-radius: 10px;
 
 }
@@ -95,24 +101,24 @@ footer {
 }
 
 .card {
-  background-color: rgb(255, 153, 0, 0.871);
+  background-color: var(--yellow);
   padding: 20px 25px 30px;
   margin: 0 auto 25px;
   margin-top: 50px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 2px 2px var(--black)(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px var(--black)(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px var(--black)(0, 0, 0, 0.3);
 }
 
 .loginBtn,
  .signupBtn{
   margin-top: 2vh;
-  background-color: #363a43;
-  border-color: #000000;
-  color: rgb(255, 255, 255);
+  background-color: var(--blue);
+  border-color: var(--black);
+  color: var(--white);
 }
 
 .profile-img-card {
@@ -156,6 +162,9 @@ footer {
     justify-content: space-around;
   }
 
+  .supportText {
+    font-size: 10px;
+  }
 
 }
 

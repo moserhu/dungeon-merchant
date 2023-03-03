@@ -4,6 +4,9 @@ import Carousel from "../img-slider/img-slider.components";
 import { Link } from 'react-router-dom';
 import "../../App.css";
 import "./home.css";
+import { FaMobile} from "react-icons/fa";
+import { FaShoppingBag } from "react-icons/fa";
+import { GiWingfoot } from "react-icons/gi";
 
 import balor from "../../img/balor.jpeg";
 import gametable from "../../img/gametable.jpeg";
@@ -47,27 +50,47 @@ export default class Home extends Component {
       <div >
       <div className="homeContainer">
         
-        <div className="contentContainer">
-          
-          <div className="mainTitleContainer">
-            <h1 className="mainTitle">Dungeon Merchant</h1>
-          </div>
-    
-        <header className="homeHeader">
-          
-          <span>Welcome to Dungeon Merchant, a site built to help Dungeon and Game Masters alike organize the myriad of shops and pubs that populate the multiverse of tabletop Role Playing Games.</span>
-        </header>
+          <div className="contentContainer">
+            <div className="pageDivider3"></div>
+            <div className="homeSkillsContainer">
+              <div className="homeSkill"> 
+                <div className="homeSkillIcon">
+                  <FaMobile className="skillIcon" ></FaMobile>
+                </div>
+                <span>Mobile Friendly</span>
+              </div>
+              <div className="homeSkill">
+                <div className="homeSkillIcon">
+                <GiWingfoot className="skillIcon" ></GiWingfoot>
+                </div>
+                <span>Fast & Easy</span>
+              </div>
+              <div className="homeSkill">
+                <div className="homeSkillIcon">
+                <FaShoppingBag className="skillIcon" ></FaShoppingBag>  
+                </div>
+                
+                <span>Large Selection of Items</span>
+              </div>
+            </div>
+       
+            <div className="homeMain">
+              <Link to={'/price-check/'}>
+              <div className="homeMainItemContainer">
+                <div className="homeMainItem">Price Check <div className="smallText">Game Items</div></div>
+              </div>
+              </Link>
+              <Link to={'/shop/'}>
+              <div className="homeMainItemContainer">
+                <div className="homeMainItem">Build a Shop</div>
+              </div>
+              </Link>
+            </div>
        
         <div className="imgSliderContainer">
         <Carousel
             show={3}
           >
-                    <div className="sliderTextContainer" style={{ padding: 8 }} >
-                      <span className="sliderText" style={{ width: '100%' }}>
-                          Tabletop games are fun but there is so much to keep track of already,
-                          Dungeon Tracker will allow you more time for memories and less time prepping
-                      </span>
-                    </div>
                 <div>
                     <div style={{padding: 8}} >
                         <img src={balor} alt="placeholder" style={{width:'100%'}} />
@@ -95,18 +118,20 @@ export default class Home extends Component {
                 </div>
             </Carousel>
        
-        </div>
+            </div>
+            <div className="pageDivider2"></div>
          <div>
-          <p className="homeIntro">
+              <p className="homeIntro">
+                About Us:
+              <div className="smallText">
             This site is a passion project to help make the worlds we build more immersive,
             by taking out the time of monotonously reading off shop or pub items. Instead
             players can window shop your world just like they would do their favorite IRL
-            stores.
+                stores.
+              </div>  
           </p>
-        </div>
-        <span> 
-          <Link className="buttons buildShopbutton" style={{padding: "1%"}} to={'/shop/'}>Build your first shop now!</Link>
-        </span>
+            </div>
+        <div className="pageDivider3"></div>
         <div className="adContainer">
             <a href="https://www.dmsguild.com/product/419531/The-Desolation-of-Dawn">
               <span className="adLink"></span>
@@ -115,7 +140,21 @@ export default class Home extends Component {
              
             <img className="adImage" src={dawn} alt="desolation of dawn ad"  />
         </div>
-      
+            
+      <div className="homeMain">
+              <Link to={'/price-check/'}>
+              <div className="homeMainItemContainer">
+                <div className="homeMainItem">Price Check <div className="smallText">Game Items</div></div>
+              </div>
+              </Link>
+              <Link to={'/shop/'}>
+              <div className="homeMainItemContainer">
+                <div className="homeMainItem">Build a Shop</div>
+              </div>
+              </Link>
+              
+            </div>
+            
           </div>
           
         </div>

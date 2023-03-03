@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import PriceCheckDropdown from '../price-check/price-check.dropdown.component';
 import uniqid from 'uniqid';
-
+import "./price-check.css";
 
 
 function PriceCheck() {
@@ -57,7 +57,6 @@ function PriceCheck() {
 
     return (
         <div className='App'key={items.id} >
-    <h1 className='title'>Price Checker</h1>
        
             <PriceCheckDropdown
                     isSearchable
