@@ -80,7 +80,7 @@ const getDisplay = () => {
               
           {(selectedValue).map((option) => (
 
-                <div key={option.id} className='items'>
+                <div key={option.id} className='priceItems'>
                   <h2 className="priceCheckTitle">{option.value}</h2>
                   
                   <span className="priceContainer">
@@ -217,7 +217,7 @@ const getDisplay = () => {
         </div>
       )}
         </div>
-      <div>{getDisplay()}</div>
+      {getDisplay()}
     </div>
   );
 };

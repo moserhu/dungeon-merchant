@@ -1,5 +1,6 @@
 const res = require("express/lib/response");
 const db = require("../models");
+const Packs = require("../models/packs.model");
 const User = db.user;
 //const pubItems = require("../packs/pub");
 
@@ -12,7 +13,14 @@ exports.userBoard = (req, res) => {
 };
 
 exports.adminBoard = (req, res) => {
-  res.status(200).send("Admin Content.");
+
+  Packs.find( function (err, data) {
+    if (err) {
+      res.status(500).send("error")
+    } else {
+      res.status(200).send(data);
+    }
+  })
 };
 
 exports.moderatorBoard = (req, res) => {

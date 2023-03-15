@@ -8,6 +8,35 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 const { user } = require("../models");
 const res = require("express/lib/response");
+const Packs = require("../models/packs.model");
+const { header } = require("express/lib/response");
+
+
+exports.updatePacks = async (req, res) => {
+  console.log(req.body.newItem.name);
+  let packName = await req.body.activePack;
+  let newItem = await req.body.newItem;
+  const filter = { name: packName };
+  try {
+    await Packs.updateOne(
+      filter,
+      {
+        $push: {
+          items:
+          {
+            name: newItem.name,
+            id: newItem.id,
+            cost: newItem.cost,
+            coinType: newItem.coinType,
+            desc: newItem.desc
+          }   
+        }
+      }
+    );
+    res.status(200).send({ message: "item Added" });
+  } catch (err) {
+    console.error(err)
+  }};
 
 exports.saveShopItems = async (req, res) => {
  
@@ -52,11 +81,7 @@ exports.saveShopItems = async (req, res) => {
       res.status(200).send({ message: "shop made" });
     } catch (err) {
     console.error(err);
-  }
-
-  } 
-  
-};
+  }}};
 
 exports.deleteShop = async (req, res) => {
 let userId = req.query.id;

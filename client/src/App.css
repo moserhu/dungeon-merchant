@@ -131,6 +131,13 @@ footer {
   border-radius: 50%;
 }
 
+.col-md-12 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+
 /* MEDIA QUERIES------------------------------------------------------------------------- */
 @media (max-width: 1075px) {
  

@@ -6,6 +6,13 @@
     --darkBlue: #011638;
 }
 
+.shopMain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
 .shopPageContainer {
     background: none;
 }
@@ -470,7 +477,11 @@ added later in JS
 .shops-dropdown:hover,
 .shops-dropdown:focus-within {
     height: auto;
-    transition: 1s ease;
+    transition: 10s;
+}
+
+input {
+    text-align: center;
 }
 
 @media (max-width:880px) {

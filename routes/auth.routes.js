@@ -23,6 +23,8 @@ module.exports = function(app) {
 
   app.post("/api/auth/signin", controller.signin);
 
+  app.put("/update/packs", controller.updatePacks);
+
   app.put("/update/shops", controller.saveShopItems);
 
   //app.put("/update/taverns", controller.saveTavernItems);

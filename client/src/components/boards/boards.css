@@ -1,0 +1,94 @@
+#root {
+    --black: #141414;
+    --yellow: #EEC643;
+    --white: #EEF0F2;
+    --blue: #0D21A1;
+    --darkBlue: #011638;
+}
+
+.adminPage {
+    display: grid;
+    grid-template-columns: 20% auto auto;
+}
+
+.adminNavContainer {
+    background-color: var(--blue);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+.adminNav {
+ width: 10rem;
+ height: 100vh;
+}
+
+
+
+.packsContainer {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.itemPacks {
+    background-color: var(--white);
+    height: 2rem;
+    overflow: hidden;
+}
+
+.itemPacks:hover,
+.itemPacks:focus-within {
+    height: auto;
+    transition: 2s;
+}
+
+
+.packsTitle {
+    background-color: var(--white);
+}
+
+.packName:hover {
+    background-color: var(--yellow);
+}
+
+.packSelector {
+    margin-left: 3rem;
+}
+
+.packEditor {
+    background-color: var(--darkBlue);
+    color: var(--white);
+    padding: 1rem;
+    padding-bottom: 1rem;
+    height: fit-content;
+    margin-left: 3rem;
+}
+
+.packForm {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+}
+
+.packBoxes {
+    display: flex;
+    background-color: var(--white);
+    color: var(--black);
+    width: 1fr;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.packDesc {
+    display: inline-block;
+    background-color: var(--white);
+    color: var(--black);
+    line-height: 300%;
+}
+
+.packSubmit {
+    margin-top: 1rem;
+}

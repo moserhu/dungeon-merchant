@@ -21,16 +21,21 @@ verifyToken = (req, res, next) => {
 };
 
 isAdmin = (req, res, next) => {
-  User.findById(req.userId).exec((err, user) => {
+  User.find({id:req.userId}).exec((err, user) => {
     if (err) {
+      
       res.status(500).send({ message: err });
+      console.log("here");
       return;
     }
 
+    //console.log(user)
+    //console.log(user[0].roles[0])
     Role.find(
       {
-        _id: { $in: user.roles }
+        _id: { $in: user[0].roles[0] }
       },
+      
       (err, roles) => {
         if (err) {
           res.status(500).send({ message: err });
@@ -42,13 +47,14 @@ isAdmin = (req, res, next) => {
             next();
             return;
           }
+          
         }
-
+        
         res.status(403).send({ message: "Require Admin Role!" });
         return;
       }
     );
-  });
+  })
 };
 
 isModerator = (req, res, next) => {

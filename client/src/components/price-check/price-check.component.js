@@ -56,8 +56,10 @@ function PriceCheck() {
 
 
     return (
-        <div className='App'key={items.id} >
-       
+        <div  >
+            <div className='priceMain'>
+
+            
             <PriceCheckDropdown
                     isSearchable
                     isMulti
@@ -65,7 +67,7 @@ function PriceCheck() {
                     options={options}
                     onChange={(value)=> console.log(value)}
                 />
-           
+           </div>
           
         </div>
   );

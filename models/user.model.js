@@ -17,7 +17,8 @@ const User = mongoose.model(
       }
     ]
     ,
-    roles: [
+    roles: 
+    [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role"

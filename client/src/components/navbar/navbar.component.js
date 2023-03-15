@@ -82,7 +82,6 @@ render() {
     const x = document.getElementById("hamburger");
     const y = document.getElementById("nav-links");
     x.classList.toggle("change");
-    console.log(y);
     if (y.style.display === "flex") {
       y.style.display = "none";
     } else {

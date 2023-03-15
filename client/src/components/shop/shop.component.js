@@ -79,7 +79,7 @@ function Shop() {
 
     return (
         <div className='App'key={items.id} >
-   
+            <div className='shopMain'>
         
             <ShopDropdown
                     isSearchable
@@ -89,6 +89,7 @@ function Shop() {
                     onChange={(value)=> console.log(value)}
                 />
             
+            </div>
         </div>
   );
 };
