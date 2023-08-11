@@ -464,14 +464,19 @@ const fetchShops = async () => {
   const onItemClick = async (option) => {
     let newValue;
     const url = option.url;
-    const urlSplit = url.split('/');
-    const itemType = (urlSplit[2]);
-
+    const urlSplit = option.url !== undefined
+    ? url.split('/') 
+    : undefined
+    const itemType = option.url !== undefined
+      ? urlSplit[2]
+      : undefined
+    
     if (isMulti) {
       if (selectedValue.findIndex((o) => o.value === option.value) >= 0) {
         newValue = removeOption(option);
       } else {
         if (itemType === "equipment") {
+          
       const item = await fetch(
              `https://www.dnd5eapi.co${url}`
     );
@@ -482,7 +487,7 @@ const fetchShops = async () => {
     option.cost = price;
     option.coinType = coinType;
     } else {
-      option.cost = 0;
+      option.cost = 0
     }
         newValue = [...selectedValue, option]; 
       }

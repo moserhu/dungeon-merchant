@@ -41,7 +41,7 @@ function Shop() {
         
         const items = sortedItems;
         setItems(items);
-        console.log(magicItemResults);
+        console.log(pubItems);
     };
 
     const options = items.map((item) => {
