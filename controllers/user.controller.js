@@ -44,9 +44,15 @@ exports.userShops = (req, res) => {
   })
 };
 
-/*
-exports.pub = (req, res) => {
-  res.status(200).send(pubItems);
+
+exports.customPacks = (req, res) => {
+
+  Packs.find( function (err, data) {
+    if (err) {
+      res.status(500).send("error")
+    } else {
+      res.status(200).send(data);
+    }
+  })
 };
 
-*/

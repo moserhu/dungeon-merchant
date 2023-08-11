@@ -29,6 +29,10 @@ module.exports = function(app) {
     controller.adminBoard
   );
 
+  app.get(
+    "/api/packs",
+    controller.customPacks
+  );
 
   //app.get("/api/pub", controller.pub);
 };

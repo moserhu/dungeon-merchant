@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ShopDropdown from './shop.dropdown.component';
 import uniqid from 'uniqid';
-
+import axios from "axios";
 
 
 function Shop() {
@@ -22,20 +22,26 @@ function Shop() {
         const equipmentItemsData = await fetch(
             'https://www.dnd5eapi.co/api/equipment'
         );
+
+        const customItemsData = await axios.get(
+           '/api/packs'
+        );
          
         // Sort Items Alphabetically
         const magicItems = await magicItemsData.json();
         const equipmentItems = await equipmentItemsData.json();
-        
+        const customItems =  customItemsData.data;
+        const pubItems = customItems[0].items;
+
         const magicItemResults = magicItems.results;
         const equipmentItemsResults = equipmentItems.results;
         
-        const unsortedItems = magicItemResults.concat(equipmentItemsResults);
+        const unsortedItems = magicItemResults.concat(equipmentItemsResults, pubItems);
         const sortedItems = unsortedItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
         
         const items = sortedItems;
         setItems(items);
-        
+        console.log(magicItemResults);
     };
 
     const options = items.map((item) => {
