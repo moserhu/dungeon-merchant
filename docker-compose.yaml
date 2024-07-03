@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  dungeon_merchant_server:
+    build: .
+    container_name: dungeon_merchant_server_container
+    ports:
+      - "8080:8080"
+    stdin_open: true
+    tty: true
+    
